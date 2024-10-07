@@ -5,8 +5,18 @@ import GlobalStyles from "../styles/GlobalStyles";
 import { getDatabase, ref, get } from "firebase/database"; // Import necessary functions from Firebase
 
 const monthNamesDanish = [
-  "januar", "februar", "marts", "april", "maj", "juni",
-  "juli", "august", "september", "oktober", "november", "december"
+  "januar",
+  "februar",
+  "marts",
+  "april",
+  "maj",
+  "juni",
+  "juli",
+  "august",
+  "september",
+  "oktober",
+  "november",
+  "december",
 ];
 
 export default function Home() {
@@ -57,7 +67,13 @@ export default function Home() {
           </View>
         ))}
       </ScrollView>
-      <Text style={GlobalStyles.underTitle}>Grønne anbefalinger</Text>
+      <Text style={GlobalStyles.underTitle}>Tips til en grønnere hverdag</Text>
+      <View style={GlobalStyles.productContainer}>
+        <Text style={GlobalStyles.text}>
+          Skær ned på mejeri produkter. {"\n"}
+          Prøv at skifte din komælk ud med havremælk eller mandelmælk.
+        </Text>
+      </View>
       <StatusBar style="auto" />
     </View>
   );
