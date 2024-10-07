@@ -10,6 +10,7 @@ import GlobalStyles from "./styles/GlobalStyles";
 // screens
 import Coop from "./screens/CoopScreen";
 import Home from "./screens/HomeScreen";
+import Search from "./screens/SearchScreen";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -50,6 +51,11 @@ export default function App() {
           name="Hjem"
           component={Home}
           options={{ tabBarIcon: () => <Ionicons name="home" size={20} /> }}
+        />
+        <Tab.Screen
+          name="Søg"
+          component={Search}
+          options={{ tabBarIcon: () => <Ionicons name="search" size={20} /> }}
         />
        </Tab.Navigator>
     </NavigationContainer>  );

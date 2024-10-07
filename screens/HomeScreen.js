@@ -30,7 +30,7 @@ export default function Home() {
     try {
       const currentMonthIndex = new Date().getMonth(); // getMonth() returns 0-11
       const currentMonthNameDanish = monthNamesDanish[currentMonthIndex];
-      console.log(currentMonthNameDanish); // This will log the current month name in Danish
+      // console.log(currentMonthNameDanish); // This will log the current month name in Danish
 
       const db = getDatabase(); // Use the already initialized Firebase app
       const dbRef = ref(db, "products");
@@ -43,7 +43,7 @@ export default function Home() {
           (product) =>
             product.season && product.season.includes(currentMonthNameDanish)
         );
-        console.log("Products in season:", productsInSeason); // Log the products in season
+        //  console.log("Products in season:", productsInSeason); // Log the products in season
         setProducts(productsInSeason);
       } else {
         console.log("No data available");
@@ -55,20 +55,20 @@ export default function Home() {
 
   return (
     <View style={GlobalStyles.container}>
-      <Text style={GlobalStyles.title}>GreenerGoods {"\n"}</Text>
+      <Text style={GlobalStyles.title}>Greener Goods</Text>
       <Text style={GlobalStyles.underTitle}>Varer i sæson</Text>
       <ScrollView horizontal={true} style={{ marginVertical: 10 }}>
         {products.map((product) => (
           <View key={product.id} style={GlobalStyles.productContainer}>
             <Text style={GlobalStyles.text}>{product.Produkt}</Text>
             <Text style={GlobalStyles.text}>
-              CO2 aftryk {product.Total_kg_CO2e_kg.toFixed(2)} kg CO2e/kg
+              CO2 aftryk: {product.Total_kg_CO2e_pr_kg.toFixed(2)} kg CO2e/kg
             </Text>
           </View>
         ))}
       </ScrollView>
       <Text style={GlobalStyles.underTitle}>Tips til en grønnere hverdag</Text>
-      <View style={GlobalStyles.productContainer}>
+      <View style={[GlobalStyles.productContainer, GlobalStyles.box]}>
         <Text style={GlobalStyles.text}>
           Skær ned på mejeri produkter. {"\n"}
           Prøv at skifte din komælk ud med havremælk eller mandelmælk.

@@ -16,6 +16,10 @@ export default StyleSheet.create({
     fontWeight: "bold",
     textAlign: "center",
     fontFamily: "Anton_400Regular",
+    marginTop: 20,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.20,
   },
   underTitle: {
     fontSize: 28,
@@ -42,6 +46,21 @@ export default StyleSheet.create({
     backgroundColor: "#f9f9f9",
     height: 200,
     // Add shadow to the product container
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+  },
+  box: {
+    width: "90%",
+  },
+
+  // Add styles for the search bar
+  searchBar: {
+    height: 40,
+    borderRadius: 10,
+    paddingLeft: 10,
+    margin: 20,
+    backgroundColor: "#f9f9f9",
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.25,
