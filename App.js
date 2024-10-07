@@ -2,14 +2,13 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-// import { getApps, initializeApp } from "firebase/app";
+import { getApps, initializeApp } from "firebase/app";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
 import GlobalStyles from "./styles/GlobalStyles";
 import Home from "./screens/HomeScreen";
 
 // Your web app's Firebase configuration
-/*
 const firebaseConfig = {
   apiKey: "AIzaSyBrTaP41sy8mc5Tusm1--bJLu0vwz9ih3s",
   authDomain: "greenergoods.firebaseapp.com",
@@ -25,7 +24,7 @@ const firebaseConfig = {
 if (!getApps().length) {
   initializeApp(firebaseConfig);
 }
-*/
+
 
 const Tab = createBottomTabNavigator();
 
