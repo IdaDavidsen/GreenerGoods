@@ -5,7 +5,7 @@ import { StyleSheet } from "react-native";
 export default StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#F7F5F5",
     alignItems: "center",
     justifyContent: "flex-start",
     padding: 20,
@@ -34,12 +34,14 @@ export default StyleSheet.create({
   },
   productContainer: {
     alignItems: "center",
+    justifyContent: "center", // Center content vertically
     marginHorizontal: 10,
+    marginTop: 20,
     padding: 10,
     borderRadius: 5,
     backgroundColor: "#f9f9f9",
     height: 200,
-    // add shadow to the product container
+    // Add shadow to the product container
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.25,
