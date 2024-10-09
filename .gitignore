@@ -37,5 +37,5 @@ yarn-error.*
 # env with API keys
 .env
 
-# excel file with data
+# Ignore Excel file
 database/denStoreKlimadatabase.xlsx
