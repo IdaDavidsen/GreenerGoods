@@ -65,4 +65,16 @@ export default StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.25,
   },
+
+  // Add styles for the button
+  button: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    borderRadius: 50,
+    elevation: 3,
+    backgroundColor: 'pink',
+    margin: 20,
+    },
 });

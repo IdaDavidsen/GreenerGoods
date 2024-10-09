@@ -1,3 +1,4 @@
+import React from "react";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, Image } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
@@ -11,6 +12,7 @@ import GlobalStyles from "./styles/GlobalStyles";
 import Coop from "./screens/CoopScreen";
 import Home from "./screens/HomeScreen";
 import Search from "./screens/SearchScreen";
+import StackComponent from "./components/StackComponent";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -39,10 +41,10 @@ export default function App() {
           name=" "
           component={Coop}
           options={{
-            tabBarIcon: ({ color, size }) => (
+            tabBarIcon: () => (
               <Image
-                source={require('./assets/coop.png')}
-                style={{ width: 30, height: 30}}
+                source={require("./assets/coop.png")}
+                style={{ width: 30, height: 30 }}
               />
             ),
           }}
@@ -54,9 +56,10 @@ export default function App() {
         />
         <Tab.Screen
           name="Søg"
-          component={Search}
+          component={StackComponent}
           options={{ tabBarIcon: () => <Ionicons name="search" size={20} /> }}
         />
-       </Tab.Navigator>
-    </NavigationContainer>  );
+      </Tab.Navigator>
+    </NavigationContainer>
+  );
 }

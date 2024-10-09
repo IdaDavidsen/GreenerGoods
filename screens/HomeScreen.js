@@ -22,34 +22,29 @@ const monthNamesDanish = [
 export default function Home() {
   const [products, setProducts] = useState([]);
 
+  // Products in season
   useEffect(() => {
     fetchProductsInSeason();
   }, []);
 
   const fetchProductsInSeason = async () => {
     try {
-      const currentMonthIndex = new Date().getMonth(); // getMonth() returns 0-11
+      const currentMonthIndex = new Date().getMonth();
       const currentMonthNameDanish = monthNamesDanish[currentMonthIndex];
-      // console.log(currentMonthNameDanish); // This will log the current month name in Danish
 
-      const db = getDatabase(); // Use the already initialized Firebase app
+      const db = getDatabase();
       const dbRef = ref(db, "products");
       const snapshot = await get(dbRef);
-      // console.log(snapshot); // This will log the snapshot of products
 
       if (snapshot.exists()) {
-        const data = snapshot.val();
-        const productsInSeason = Object.values(data).filter(
-          (product) =>
-            product.season && product.season.includes(currentMonthNameDanish)
-        );
-        //  console.log("Products in season:", productsInSeason); // Log the products in season
+        const productsData = snapshot.val();
+        const productsInSeason = Object.keys(productsData)
+          .filter((key) => productsData[key].Season && productsData[key].Season.includes(currentMonthNameDanish))
+          .map((key) => ({ id: key, ...productsData[key] }));
         setProducts(productsInSeason);
-      } else {
-        console.log("No data available");
       }
     } catch (error) {
-      console.error("Error fetching data: ", error);
+      console.error("Error fetching products in season:", error);
     }
   };
 

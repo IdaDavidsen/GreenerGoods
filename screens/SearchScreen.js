@@ -1,8 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, memo } from "react";
 import { StatusBar } from "expo-status-bar";
-import { Text, View, TextInput, FlatList, SafeAreaView, TouchableOpacity } from "react-native";
+import {
+  Text,
+  View,
+  TextInput,
+  FlatList,
+  SafeAreaView,
+  TouchableOpacity,
+} from "react-native";
 import { getDatabase, ref, get } from "firebase/database";
 import GlobalStyles from "../styles/GlobalStyles";
+
+
+const ProductItem = memo(({ item, onPress }) => (
+  <TouchableOpacity style={GlobalStyles.productItem} onPress={onPress}>
+    <Text style={GlobalStyles.text}>{item.Produkt}</Text>
+  </TouchableOpacity>
+));
 
 export default function Search({ navigation }) {
   const [query, setQuery] = useState("");
@@ -48,8 +62,10 @@ export default function Search({ navigation }) {
 
   return (
     <SafeAreaView style={GlobalStyles.container}>
-        <Text style={GlobalStyles.title}>Greener Goods</Text>
-        <Text style={GlobalStyles.underTitle}>Leder du efter noget specifikt?</Text>
+      <Text style={GlobalStyles.title}>Greener Goods</Text>
+      <Text style={GlobalStyles.underTitle}>
+        Leder du efter noget specifikt?
+      </Text>
       <TextInput
         style={[GlobalStyles.searchBar, GlobalStyles.box]}
         placeholder="Søg efter produkter her"
@@ -58,14 +74,16 @@ export default function Search({ navigation }) {
       />
       <FlatList
         data={sortedProducts}
-        keyExtractor={(item, index) => item.id ? item.id.toString() : index.toString()}
+        keyExtractor={(item, index) =>
+          item.id ? item.id.toString() : index.toString()
+        }
         renderItem={({ item }) => (
-          <TouchableOpacity
-            style={GlobalStyles.productItem}
-            onPress={() => navigation.navigate("ProductDetail", { product: item })}
-          >
-            <Text style={GlobalStyles.text}>{item.Produkt}</Text>
-          </TouchableOpacity>
+          <ProductItem
+            item={item}
+            onPress={() =>
+              navigation.navigate("ProductDetails", { product: item })
+            }
+          />
         )}
       />
       <StatusBar style="auto" />
