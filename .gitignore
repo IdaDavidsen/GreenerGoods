@@ -37,5 +37,5 @@ yarn-error.*
 # Ignore Excel file
 database/denStoreKlimadatabase.xlsx
 
-# Ignore service account key
+# ignore serviceAccountKey.json
 database/serviceAccountKey.json
