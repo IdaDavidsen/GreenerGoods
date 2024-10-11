@@ -3,6 +3,7 @@ import { StatusBar } from "expo-status-bar";
 import { ScrollView, Text, View } from "react-native";
 import GlobalStyles from "../styles/GlobalStyles";
 import { getDatabase, ref, get } from "firebase/database"; // Import necessary functions from Firebase
+import GreenerGoodsComponent from "../components/GreenerGoods";
 
 const monthNamesDanish = [
   "januar",
@@ -50,7 +51,7 @@ export default function Home() {
 
   return (
     <View style={GlobalStyles.container}>
-      <Text style={GlobalStyles.title}>Greener Goods</Text>
+      <GreenerGoodsComponent />
       <Text style={GlobalStyles.underTitle}>Varer i sæson</Text>
       <ScrollView horizontal={true} style={{ marginVertical: 10 }}>
         {products.map((product) => (

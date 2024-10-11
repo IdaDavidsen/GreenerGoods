@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import { getDatabase, ref, get } from "firebase/database";
 import GlobalStyles from "../styles/GlobalStyles";
-
+import GreenerGoodsComponent from "../components/GreenerGoods";
 
 const ProductItem = memo(({ item, onPress }) => (
   <TouchableOpacity style={GlobalStyles.productItem} onPress={onPress}>
@@ -62,7 +62,7 @@ export default function Search({ navigation }) {
 
   return (
     <SafeAreaView style={GlobalStyles.container}>
-      <Text style={GlobalStyles.title}>Greener Goods</Text>
+      <GreenerGoodsComponent />
       <Text style={GlobalStyles.underTitle}>
         Leder du efter noget specifikt?
       </Text>
