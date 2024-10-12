@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { StatusBar } from "expo-status-bar";
-import { ScrollView, Text, View } from "react-native";
+import { ScrollView, Text, View, Image } from "react-native";
 import GlobalStyles from "../styles/GlobalStyles";
 import { getDatabase, ref, get } from "firebase/database"; // Import necessary functions from Firebase
 
@@ -52,23 +52,23 @@ export default function Home() {
     <View style={GlobalStyles.container}>
       <Text style={GlobalStyles.title}>Greener Goods</Text>
       <Text style={GlobalStyles.underTitle}>Varer i sæson</Text>
-      <ScrollView horizontal={true} style={{ marginVertical: 10 }}>
+      <ScrollView vertical={true} style={{ marginVertical: 10 }}>
         {products.map((product) => (
           <View key={product.id} style={GlobalStyles.seasonContainer}>
             <Text style={GlobalStyles.underTitle}>{product.Produkt}</Text>
+            {product.Produkt === "Agurk" && ( 
+              <Image
+                source={require("../assets/food/agurk.png")}
+                style={{ width: 120, height: 100 }}
+              />
+            )}
             <Text style={GlobalStyles.text}>
               CO2 aftryk: {product.Total_kg_CO2e_pr_kg.toFixed(2)} kg CO2e/kg
             </Text>
           </View>
         ))}
       </ScrollView>
-      <Text style={GlobalStyles.underTitle}>Tips til en grønnere hverdag</Text>
-      <View style={[GlobalStyles.seasonContainer, GlobalStyles.box]}>
-        <Text style={GlobalStyles.text}>
-          Skær ned på mejeri produkter. {"\n"}
-          Prøv at skifte din komælk ud med havremælk eller mandelmælk.
-        </Text>
-      </View>
+     
       <StatusBar style="auto" />
     </View>
   );

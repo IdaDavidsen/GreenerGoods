@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { Text, View } from "react-native";
+import { Text, View, Image } from "react-native";
 import GlobalStyles from "../../styles/GlobalStyles";
 import { useState } from "react";
 
@@ -10,6 +10,12 @@ export default function ProductDetails({ route, navigation }) {
       <Text style={GlobalStyles.title}>Greener Goods</Text>
       <View style={[GlobalStyles.productContainer, GlobalStyles.box]}>
         <Text style={GlobalStyles.underTitle}>{product.Produkt}</Text>
+        {product.Produkt === "Agurk" && ( 
+              <Image
+                source={require("../../assets/food/agurk.png")}
+                style={{ width: 120, height: 100, alignSelf: "flex-end", marginRight: 10 }}
+              />
+            )}
         <Text style={GlobalStyles.text}>
           CO2 aftryk: {product.Total_kg_CO2e_pr_kg.toFixed(2)} kg CO2e/kg {"\n"}
         </Text>
