@@ -54,8 +54,8 @@ export default function Home() {
       <Text style={GlobalStyles.underTitle}>Varer i sæson</Text>
       <ScrollView horizontal={true} style={{ marginVertical: 10 }}>
         {products.map((product) => (
-          <View key={product.id} style={GlobalStyles.productContainer}>
-            <Text style={GlobalStyles.text}>{product.Produkt}</Text>
+          <View key={product.id} style={GlobalStyles.seasonContainer}>
+            <Text style={GlobalStyles.underTitle}>{product.Produkt}</Text>
             <Text style={GlobalStyles.text}>
               CO2 aftryk: {product.Total_kg_CO2e_pr_kg.toFixed(2)} kg CO2e/kg
             </Text>
@@ -63,7 +63,7 @@ export default function Home() {
         ))}
       </ScrollView>
       <Text style={GlobalStyles.underTitle}>Tips til en grønnere hverdag</Text>
-      <View style={[GlobalStyles.productContainer, GlobalStyles.box]}>
+      <View style={[GlobalStyles.seasonContainer, GlobalStyles.box]}>
         <Text style={GlobalStyles.text}>
           Skær ned på mejeri produkter. {"\n"}
           Prøv at skifte din komælk ud med havremælk eller mandelmælk.

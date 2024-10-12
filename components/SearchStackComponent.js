@@ -9,7 +9,7 @@ import ProductDetails from "../screens/StackScreens/ProductDetails"
 
 const Stack = createStackNavigator();
 
-export default function StackComponent() {
+export default function SearchStackComponent() {
   return (
    
       <Stack.Navigator initialRouteName="Search">

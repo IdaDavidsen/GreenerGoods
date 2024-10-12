@@ -7,10 +7,11 @@ import {
   FlatList,
   SafeAreaView,
   TouchableOpacity,
+  StyleSheet,
 } from "react-native";
+import Ionicons from "react-native-vector-icons/Ionicons";
 import { getDatabase, ref, get } from "firebase/database";
 import GlobalStyles from "../styles/GlobalStyles";
-
 
 const ProductItem = memo(({ item, onPress }) => (
   <TouchableOpacity style={GlobalStyles.productItem} onPress={onPress}>
@@ -45,7 +46,7 @@ export default function Search({ navigation }) {
 
   useEffect(() => {
     if (query === "") {
-      setFilteredProducts(products);
+      setFilteredProducts([]);
     } else {
       setFilteredProducts(
         products.filter((product) =>
@@ -63,30 +64,50 @@ export default function Search({ navigation }) {
   return (
     <SafeAreaView style={GlobalStyles.container}>
       <Text style={GlobalStyles.title}>Greener Goods</Text>
-      <Text style={GlobalStyles.underTitle}>
-        Leder du efter noget specifikt?
-      </Text>
-      <TextInput
-        style={[GlobalStyles.searchBar, GlobalStyles.box]}
-        placeholder="Søg efter produkter her"
-        value={query}
-        onChangeText={setQuery}
-      />
-      <FlatList
-        data={sortedProducts}
-        keyExtractor={(item, index) =>
-          item.id ? item.id.toString() : index.toString()
-        }
-        renderItem={({ item }) => (
-          <ProductItem
-            item={item}
-            onPress={() =>
-              navigation.navigate("ProductDetails", { product: item })
-            }
-          />
-        )}
-      />
+      <Text style={GlobalStyles.underTitle}>Søg efter et produkt </Text>
+      <View style={[GlobalStyles.searchBar, GlobalStyles.box]}>
+        <Ionicons style={GlobalStyles.searchIcon} name="search" size={20} />
+        <TextInput 
+          style={styles.textInput}
+          placeholder="Hvad leder du efter?"
+          value={query}
+          onChangeText={setQuery}
+        />
+      </View>
+      {/* Display the filtered products, and not before */}
+      {query !== "" && (
+        <FlatList
+          data={sortedProducts}
+          keyExtractor={(item, index) =>
+            item.id ? item.id.toString() : index.toString()
+          }
+          renderItem={({ item }) => (
+            <ProductItem
+              item={item}
+              onPress={() =>
+                navigation.navigate("ProductDetails", { product: item })
+              }
+            />
+          )}
+        />
+      )}
       <StatusBar style="auto" />
     </SafeAreaView>
   );
 }
+
+const styles = StyleSheet.create({
+  searchContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#fff', // Adjust as needed
+    borderRadius: 5, // Adjust as needed
+    paddingHorizontal: 10, // Adjust as needed
+  },
+  searchIcon: {
+    marginRight: 10,
+  },
+  textInput: {
+    flex: 1,
+  },
+});

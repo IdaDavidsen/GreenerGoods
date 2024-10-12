@@ -8,14 +8,35 @@ export default function ProductDetails({ route, navigation }) {
   return (
     <View style={GlobalStyles.container}>
       <Text style={GlobalStyles.title}>Greener Goods</Text>
-      <Text style={GlobalStyles.text}>
-        Her skal der være produktinformationer
-      </Text>
-      <Text style={GlobalStyles.underTitle}>{product.Produkt}</Text>
-      <Text style={GlobalStyles.text}>
-        CO2 aftryk: {product.Total_kg_CO2e_kg} kg CO2e/kg
-      </Text>
-      {/* Add more product details here */}
+      <View style={[GlobalStyles.productContainer, GlobalStyles.box]}>
+        <Text style={GlobalStyles.underTitle}>{product.Produkt}</Text>
+        <Text style={GlobalStyles.text}>
+          CO2 aftryk: {product.Total_kg_CO2e_pr_kg.toFixed(2)} kg CO2e/kg {"\n"}
+        </Text>
+        {product.Season && (
+          <Text style={GlobalStyles.text}>
+            Sæsonen for {product.Produkt.toLowerCase()} er {product.Season}{" "}
+            {"\n"}
+          </Text>
+        )}
+        <Text style={GlobalStyles.text}>
+          Energi indhold: {product.Energi_KJ_100g} kcal/100g
+        </Text>
+        <Text style={GlobalStyles.text}>
+          Protein indhold: {product.Protein_g_100g} g/100g
+        </Text>
+        <Text style={GlobalStyles.text}>
+          Fedt indhold: {product.Fedt_g_100g} g/100g
+        </Text>
+        <Text style={GlobalStyles.text}>
+          Kulhydrat indhold: {product.Kulhydrat_g_100g} g/100g
+        </Text>
+        <View style={{ flex: 1, justifyContent: "flex-end" }}>
+          <Text style={[GlobalStyles.smallText, GlobalStyles.textToLeft]}>
+            Dette data er fra Den Store Klimadatabase lavet af Concito
+          </Text>
+        </View>
+      </View>
       <StatusBar style="auto" />
     </View>
   );
