@@ -12,7 +12,7 @@ export default function GreenFeedScreen() {
        <GreenerGoodsComponent/>
        </View>
        <View>
-       <Text>GreenerGoods</Text>
+       <Text>GreenFeed</Text>
        </View>
        </SafeAreaView>
       );

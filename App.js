@@ -16,7 +16,7 @@ import Home from "./screens/HomeScreen";
 import Profile from "./screens/ProfileScreen";
 import GreenFeed from "./screens/GreenFeedScreen";
 import Search from "./screens/SearchScreen";
-import StackComponent from "./components/StackComponent";
+import SearchStackComponent from "./components/SearchStackComponent";
 import GreenFeedScreen from "./screens/GreenFeedScreen";
 
 // Your web app's Firebase configuration
