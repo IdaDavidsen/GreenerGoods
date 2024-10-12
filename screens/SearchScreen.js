@@ -7,7 +7,6 @@ import {
   FlatList,
   SafeAreaView,
   TouchableOpacity,
-  StyleSheet,
 } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { getDatabase, ref, get } from "firebase/database";
@@ -67,13 +66,25 @@ export default function Search({ navigation }) {
       <Text style={GlobalStyles.underTitle}>Søg efter et produkt </Text>
       <View style={[GlobalStyles.searchBar, GlobalStyles.box]}>
         <Ionicons style={GlobalStyles.searchIcon} name="search" size={20} />
-        <TextInput 
-          style={styles.textInput}
+        <TextInput
+          style={GlobalStyles.textInput}
           placeholder="Hvad leder du efter?"
           value={query}
           onChangeText={setQuery}
         />
+        {query.length > 0 && (
+          <View style={GlobalStyles.clearIconContainer}>
+            <TouchableOpacity onPress={() => setQuery("")}>
+              <Ionicons
+                style={GlobalStyles.clearIcon}
+                name="close-circle"
+                size={20}
+              />
+            </TouchableOpacity>
+          </View>
+        )}
       </View>
+
       {/* Display the filtered products, and not before */}
       {query !== "" && (
         <FlatList
@@ -95,19 +106,3 @@ export default function Search({ navigation }) {
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  searchContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#fff', // Adjust as needed
-    borderRadius: 5, // Adjust as needed
-    paddingHorizontal: 10, // Adjust as needed
-  },
-  searchIcon: {
-    marginRight: 10,
-  },
-  textInput: {
-    flex: 1,
-  },
-});

@@ -98,6 +98,13 @@ export default StyleSheet.create({
   searchIcon: {
     marginRight: 10,
   },
+  textInput: {
+    flex: 1,
+  },
+  clearIconContainer: {
+    position: 'absolute',
+    right: 10,
+  },
 
   // Add styles for the button
   button: {
