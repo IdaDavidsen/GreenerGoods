@@ -1,13 +1,9 @@
-import {Button,Text,
-    View,
-    TextInput,
-    ActivityIndicator,
-    StyleSheet,
-} from 'react-native';
+import {Button,Text, View, TextInput, ActivityIndicator, StyleSheet, TouchableOpacity} from 'react-native';
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { useState } from 'react';
+import GlobalStyles from '../styles/GlobalStyles';
 
-function SignUpForm() {
+function SignUpForm({switchToLogin}) {
     //Instantiering af state-variabler, der skal benyttes i SignUpForm
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -17,9 +13,9 @@ function SignUpForm() {
     
     const auth =  getAuth();
     //Her defineres brugeroprettelsesknappen, som aktiverer handleSubmit når der trykkes på knappen
-    const renderButton = () => {
-        return <Button onPress={() => handleSubmit()} title="Create user" />;
-    };
+    /*const renderButton = () => {
+        return <Button onPress={() => handleSubmit()} title="Opret bruger" />;
+    };*/
     
     //Funktion, der håndterer oprettelse af bruger, når brugeren trykker på knappen
       const handleSubmit = async() => {
@@ -39,24 +35,30 @@ function SignUpForm() {
 
     return (
         <View style={styles.componentsBox}>
-            <Text style={styles.header}>Sign up</Text>
+            <Text style={GlobalStyles.underTitle}>Sign up</Text>
             <TextInput
                 placeholder="email"
                 value={email}
                 onChangeText={(email) => setEmail(email)}
-                style={styles.inputField}
+                style={GlobalStyles.inputField}
             />
             <TextInput
                 placeholder="password"
                 value={password}
                 onChangeText={(password) => setPassword(password)}
                 secureTextEntry
-                style={styles.inputField}
+                style={GlobalStyles.inputField}
             />
             {errorMessage && (
                 <Text style={styles.error}>Error: {errorMessage}</Text>
             )}
-            {renderButton()}
+            {/*{renderButton()}*/}
+            <TouchableOpacity onPress={handleSubmit}> 
+                <Text style={[GlobalStyles.button, GlobalStyles.text]}>Opret bruger</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={switchToLogin}> 
+                <Text style={GlobalStyles.buttonText}>Har du allerede en bruger log ind her</Text>
+            </TouchableOpacity>
         </View>
     );
 }
@@ -66,25 +68,16 @@ const styles = StyleSheet.create({
     error: {
         color: 'red',
     },
-    inputField: {
-        borderWidth: 1,
-        borderRadius: 10,
-        margin: 10,
-        padding: 10,
-        width: 300,
-        backgroundColor: 'white',
-    },
-    header: {
-        fontSize: 40,
-        color: 'white',
-    },
     componentsBox: {
-        flex: 1,
+        flex: 0.75,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: 'rgba(0,0,0,0.5)',
+        backgroundColor: '#f9f9f9',
         margin: 20,
         borderRadius: 10,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 1 },
+        shadowOpacity: 0.25,
       },
 });
 

@@ -1,9 +1,10 @@
-import { Button, Text, View, TextInput, StyleSheet,} from 'react-native';
+import { Button, Text, View, TextInput, StyleSheet, TouchableOpacity,} from 'react-native';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from 'react';
+import GlobalStyles from '../styles/GlobalStyles';
 
 //LoginForm er en funktion, der returnerer en række komponenter, som tilsammen udgør en formular til login
-function LoginForm() {
+function LoginForm({switchToSignUp}) {
 
     const auth = getAuth();
 
@@ -30,30 +31,36 @@ function LoginForm() {
     }
 
     //Loginknappen, som aktiverer handleSubmit når der trykkes på knappen
-    const renderButton = () => {
+    /*const renderButton = () => {
         return <Button onPress={() => handleSubmit()} title="Login" style={styles.button}/>;
-    };
+    };*/
     
     return (
         <View style={styles.componentsBox}>
-            <Text style={styles.header}>Login</Text>
+            <Text style={GlobalStyles.underTitle}>Login</Text>
             <TextInput
                 placeholder="email"
                 value={email}
                 onChangeText={(email) => setEmail(email)}
-                style={styles.inputField}
+                style={GlobalStyles.inputField}
             />
             <TextInput
                 placeholder="password"
                 value={password}
                 onChangeText={(password) => setPassword(password) }
                 secureTextEntry
-                style={styles.inputField}
+                style={GlobalStyles.inputField}
             />
             {errorMessage && (
                 <Text style={styles.error}>Error: {errorMessage}</Text>
             )}
-            {renderButton()}
+            {/*{renderButton()*/}
+            <TouchableOpacity onPress={handleSubmit}> 
+                <Text style={[GlobalStyles.button, GlobalStyles.text]}>Log ind</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={switchToSignUp}> 
+                <Text style={GlobalStyles.buttonText}>Opret bruger her</Text>
+            </TouchableOpacity>
         </View>
     );
 }
@@ -63,30 +70,15 @@ const styles = StyleSheet.create({
     error: {
         color: 'red',
     },
-    inputField: {
-        borderWidth: 1,
-        borderRadius: 10,
-        margin: 10,
-        padding: 10,
-        width: 300,
-        backgroundColor: 'white',
-    },
-    header: {
-        fontSize: 40,
-        color: 'white',
-    },
-    button: {
-        color: 'white',
-    }, 
     componentsBox: {
-        flex: 1,
+        flex: 0.75,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: 'rgba(0,0,0,0.5)',
+        backgroundColor: '#f9f9f9',
         margin: 20,
         borderRadius: 10,
         shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
+        shadowOffset: { width: 0, height: 1 },
         shadowOpacity: 0.25,
       },
 });

@@ -110,11 +110,25 @@ export default StyleSheet.create({
   button: {
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: 12,
-    paddingHorizontal: 32,
-    borderRadius: 50,
-    elevation: 3,
-    backgroundColor: 'pink',
+    borderRadius: 10,
+    backgroundColor: '#f9f9f9',
+    borderColor: '#967859',
     margin: 20,
+    padding: 10,
+    borderWidth: 1,
     },
+  buttonText: {
+    color: '#1e6904',
+    fontWeight: 'bold',
+  },
+// style til profile
+  inputField: {
+    borderWidth: 1,
+    borderRadius: 10,
+    margin: 10,
+    padding: 10,
+    width: 300,
+    backgroundColor: '#f9f9f9',
+    borderColor: '#967859',
+},
 });

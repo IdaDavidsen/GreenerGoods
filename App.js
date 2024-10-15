@@ -17,7 +17,9 @@ import Profile from "./screens/ProfileScreen";
 import GreenFeed from "./screens/GreenFeedScreen";
 import Search from "./screens/SearchScreen";
 import SearchStackComponent from "./components/SearchStackComponent";
+import ProfileStackComponent from "./components/ProfileStackComponent";
 import GreenFeedScreen from "./screens/GreenFeedScreen";
+import Scan from "./screens/ScanScreen";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -91,20 +93,24 @@ const Tab = createBottomTabNavigator();
           component={Home}
           options={{ tabBarIcon: () => <Ionicons name="home" size={20} /> }}
         />
+          <Tab.Screen
+            name="GreenFeed"
+            component={GreenFeedScreen}
+            options={{ tabBarIcon: () => <Ionicons name="leaf" size={20} /> }}
+            />
         <Tab.Screen
           name="Søg"
           component={SearchStackComponent}
           options={{ tabBarIcon: () => <Ionicons name="search" size={20} /> }}
         />
-         <Tab.Screen
-            name="GreenFeed"
-            // component skal ændres !!
-            component={GreenFeedScreen}
-            options={{ tabBarIcon: () => <Ionicons name="leaf" size={20} /> }}
-            />
+        <Tab.Screen
+        name="Scan"
+        component={Scan}
+        options={{ tabBarIcon: () => <Ionicons name="camera" size={20} /> }}
+        />
         <Tab.Screen
           name="Profil"
-          component={Profile}
+          component={ProfileStackComponent}
           options={{ tabBarIcon: () => <Ionicons name="person" size={20} /> }}
           />
       </Tab.Navigator>
