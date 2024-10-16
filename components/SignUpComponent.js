@@ -2,6 +2,7 @@ import {Button,Text, View, TextInput, ActivityIndicator, StyleSheet, TouchableOp
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { useState } from 'react';
 import GlobalStyles from '../styles/GlobalStyles';
+import ProfileStyles from '../styles/ProfileStyles';
 
 function SignUpForm({switchToLogin}) {
     //Instantiering af state-variabler, der skal benyttes i SignUpForm
@@ -34,20 +35,20 @@ function SignUpForm({switchToLogin}) {
       }
 
     return (
-        <View style={styles.componentsBox}>
+        <View style={ProfileStyles.userBox}>
             <Text style={GlobalStyles.underTitle}>Sign up</Text>
             <TextInput
                 placeholder="email"
                 value={email}
                 onChangeText={(email) => setEmail(email)}
-                style={GlobalStyles.inputField}
+                style={ProfileStyles.inputField}
             />
             <TextInput
                 placeholder="password"
                 value={password}
                 onChangeText={(password) => setPassword(password)}
                 secureTextEntry
-                style={GlobalStyles.inputField}
+                style={ProfileStyles.inputField}
             />
             {errorMessage && (
                 <Text style={styles.error}>Error: {errorMessage}</Text>
@@ -57,7 +58,7 @@ function SignUpForm({switchToLogin}) {
                 <Text style={[GlobalStyles.button, GlobalStyles.text]}>Opret bruger</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={switchToLogin}> 
-                <Text style={GlobalStyles.buttonText}>Har du allerede en bruger log ind her</Text>
+                <Text style={ProfileStyles.buttonText}>Har du allerede en bruger log ind her</Text>
             </TouchableOpacity>
         </View>
     );
@@ -68,17 +69,6 @@ const styles = StyleSheet.create({
     error: {
         color: 'red',
     },
-    componentsBox: {
-        flex: 0.75,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: '#f9f9f9',
-        margin: 20,
-        borderRadius: 10,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 1 },
-        shadowOpacity: 0.25,
-      },
 });
 
 //Eksport af Loginform, så den kan importeres og benyttes i andre komponenter

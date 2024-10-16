@@ -6,6 +6,7 @@ import { useState } from "react";
 import SignUpForm from "../components/SignUpComponent";
 import LoginForm from "../components/LogInComponent";
 import GlobalStyles from "../styles/GlobalStyles";
+import ProfileStyles from "../styles/ProfileStyles";
 import GreenerGoodsComponent from "../components/GreenerGoods";
 import ShoppingList from "./StackScreens/ShoppingList";
 import Saved from "./StackScreens/Saved";
@@ -19,28 +20,30 @@ export default function ProfileScreen({navigation}) {
   return (
      <SafeAreaView style={GlobalStyles.container}>
      <GreenerGoodsComponent/>
-     <View>
+     <View style={ProfileStyles.container}>
         <Text style={GlobalStyles.text}>Hej</Text>
+        <View style={ProfileStyles.ProfileButtons}>
         <TouchableOpacity onPress={() => setShowInput(true)}> 
-          <Text style={GlobalStyles.buttonText}>Log ind</Text>
+          <Text style={ProfileStyles.buttonText}>Log ind</Text>
         </TouchableOpacity>
         <TouchableOpacity
         onPress={() =>
           navigation.navigate("Saved")
         }> 
-          <Text style={GlobalStyles.buttonText}>Gemte</Text>
+          <Text style={ProfileStyles.buttonText}>Gemte</Text>
         </TouchableOpacity>
         <TouchableOpacity
         onPress={() =>
           navigation.navigate("ShoppingList")
         }>
-          <Text style={GlobalStyles.buttonText}>Indkøbsliste</Text>
+          <Text style={ProfileStyles.buttonText}>Indkøbsliste</Text>
         </TouchableOpacity>
         <TouchableOpacity
         onPress={() => navigation.navigate("BehindGG")}
         >
-          <Text style={GlobalStyles.buttonText}>Bag om GreenerGoods</Text>
+          <Text style={ProfileStyles.buttonText}>Bag om GreenerGoods</Text>
         </TouchableOpacity>
+      </View>
       </View>
       <View>
       {showInput && (isLogin ? (

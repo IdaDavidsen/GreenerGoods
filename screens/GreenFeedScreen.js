@@ -12,7 +12,7 @@ export default function GreenFeedScreen() {
        <GreenerGoodsComponent/>
        </View>
        <View>
-       <Text style={GlobalStyles.text}>GreenFeed</Text>
+       <Text style={GlobalStyles.underTitle}>GreenFeed</Text>
        <Text>Udforsk hvordan du kan lave lækker mad samtidig med at du passer på miljøet</Text>
        </View>
        </SafeAreaView>

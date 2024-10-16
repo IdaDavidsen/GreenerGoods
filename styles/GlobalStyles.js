@@ -66,7 +66,6 @@ export default StyleSheet.create({
     color: "#967859",
     fontWeight: "bold",
     lineHeight: 30,
-    textAlign: "center",
     fontFamily: "Anton_400Regular",
   },
   textToLeft: {
@@ -94,7 +93,6 @@ export default StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.25,
   },
-
   searchIcon: {
     marginRight: 10,
   },
@@ -117,18 +115,4 @@ export default StyleSheet.create({
     padding: 10,
     borderWidth: 1,
     },
-  buttonText: {
-    color: '#1e6904',
-    fontWeight: 'bold',
-  },
-// style til profile
-  inputField: {
-    borderWidth: 1,
-    borderRadius: 10,
-    margin: 10,
-    padding: 10,
-    width: 300,
-    backgroundColor: '#f9f9f9',
-    borderColor: '#967859',
-},
 });
