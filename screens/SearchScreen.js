@@ -12,6 +12,7 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import { getDatabase, ref, get } from "firebase/database";
 import GlobalStyles from "../styles/GlobalStyles";
 import GreenerGoodsComponent from "../components/GreenerGoods";
+import Icon from "react-native-vector-icons/Ionicons";
 
 const ProductItem = memo(({ item, onPress }) => (
   <TouchableOpacity style={GlobalStyles.productItem} onPress={onPress}>
@@ -67,30 +68,28 @@ export default function Search({ navigation }) {
       <Text style={GlobalStyles.underTitle}>
         Leder du efter noget specifikt?
       </Text>
-      <TextInput
-        style={[GlobalStyles.searchBar, GlobalStyles.box]}
-        placeholder="Søg efter produkter her"
-        value={query}
-        onChangeText={setQuery}
-      />
-      <FlatList
-        data={sortedProducts}
-        keyExtractor={(item, index) =>
-          item.id ? item.id.toString() : index.toString()
-        }
-        renderItem={({ item }) => (
-          <ProductItem
-            item={item}
-            onPress={() =>
-              navigation.navigate("ProductDetails", { product: item })
-            }
-          />
-        )}
+      <View style={[GlobalStyles.searchBar, GlobalStyles.box]}>
+        <Ionicons style={GlobalStyles.searchIcon} name="search" size={20} />
+        <TextInput
+          style={GlobalStyles.textInput}
+          placeholder="Søg efter produkter her"
+          value={query}
+          onChangeText={setQuery}
         />
+        {query !== "" && (
+          <TouchableOpacity
+            style={GlobalStyles.clearIconContainer}
+            onPress={() => setQuery("")}
+          >
+            <Ionicons name="close-circle" size={20} color="gray" />
+          </TouchableOpacity>
+        )}
+      </View>
 
       {/* Display the filtered products, and not before */}
       {query !== "" && (
         <FlatList
+          style={GlobalStyles.searchFlatlist}
           data={sortedProducts}
           keyExtractor={(item, index) =>
             item.id ? item.id.toString() : index.toString()

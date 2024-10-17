@@ -10,9 +10,9 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 
 // screens
 import Home from "./screens/HomeScreen";
-import SearchStackComponent from "./components/SearchStackComponent";
-import ProfileStackComponent from "./components/ProfileStackComponent";
-import ScanStackComponent from "./components/ScanStackComponent";
+import SearchStackComponent from "./components/StackComponents/SearchStackComponent";
+import ProfileStackComponent from "./components/StackComponents/ProfileStackComponent";
+import ScanStackComponent from "./components/StackComponents/ScanStackComponent";
 import GreenFeedScreen from "./screens/GreenFeedScreen";
 
 // Your web app's Firebase configuration
@@ -68,10 +68,11 @@ export default function App() {
   return (
     <NavigationContainer>
       <Tab.Navigator
-       screenOptions={{
-        tabBarActiveTintColor: '#6e8840',
-        tabBarInactiveTintColor: '#967859', 
-      }}>
+        screenOptions={{
+          tabBarActiveTintColor: "#6e8840",
+          tabBarInactiveTintColor: "#967859",
+        }}
+      >
         <Tab.Screen
           name="Hjem"
           component={Home}

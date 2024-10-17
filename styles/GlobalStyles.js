@@ -102,6 +102,10 @@ export default StyleSheet.create({
     position: "absolute",
     right: 10,
   },
+  searchFlatlist: {
+    width: "100%",
+    marginLeft: 50,
+  },
 
   // Styles for the camera screen
   cameraContainer: {
