@@ -11,6 +11,7 @@ import {
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { getDatabase, ref, get } from "firebase/database";
 import GlobalStyles from "../styles/GlobalStyles";
+import GreenerGoodsComponent from "../components/GreenerGoods";
 
 const ProductItem = memo(({ item, onPress }) => (
   <TouchableOpacity style={GlobalStyles.productItem} onPress={onPress}>
@@ -62,28 +63,30 @@ export default function Search({ navigation }) {
 
   return (
     <SafeAreaView style={GlobalStyles.container}>
-      <Text style={GlobalStyles.title}>Greener Goods</Text>
-      <Text style={GlobalStyles.underTitle}>Søg efter et produkt </Text>
-      <View style={[GlobalStyles.searchBar, GlobalStyles.box]}>
-        <Ionicons style={GlobalStyles.searchIcon} name="search" size={20} />
-        <TextInput
-          style={GlobalStyles.textInput}
-          placeholder="Hvad leder du efter?"
-          value={query}
-          onChangeText={setQuery}
-        />
-        {query.length > 0 && (
-          <View style={GlobalStyles.clearIconContainer}>
-            <TouchableOpacity onPress={() => setQuery("")}>
-              <Ionicons
-                style={GlobalStyles.clearIcon}
-                name="close-circle"
-                size={20}
-              />
-            </TouchableOpacity>
-          </View>
+      <GreenerGoodsComponent />
+      <Text style={GlobalStyles.underTitle}>
+        Leder du efter noget specifikt?
+      </Text>
+      <TextInput
+        style={[GlobalStyles.searchBar, GlobalStyles.box]}
+        placeholder="Søg efter produkter her"
+        value={query}
+        onChangeText={setQuery}
+      />
+      <FlatList
+        data={sortedProducts}
+        keyExtractor={(item, index) =>
+          item.id ? item.id.toString() : index.toString()
+        }
+        renderItem={({ item }) => (
+          <ProductItem
+            item={item}
+            onPress={() =>
+              navigation.navigate("ProductDetails", { product: item })
+            }
+          />
         )}
-      </View>
+        />
 
       {/* Display the filtered products, and not before */}
       {query !== "" && (

@@ -66,7 +66,6 @@ export default StyleSheet.create({
     color: "#967859",
     fontWeight: "bold",
     lineHeight: 30,
-    textAlign: "center",
     fontFamily: "Anton_400Regular",
   },
   textToLeft: {
@@ -93,7 +92,6 @@ export default StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.25,
   },
-
   searchIcon: {
     marginRight: 10,
   },
@@ -185,13 +183,13 @@ export default StyleSheet.create({
 
   // Styles for the button
   button: {
-    alignItems: "center",
-    justifyContent: "center",
-    paddingVertical: 12,
-    paddingHorizontal: 32,
-    borderRadius: 50,
-    elevation: 3,
-    backgroundColor: "pink",
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 10,
+    backgroundColor: '#f9f9f9',
+    borderColor: '#967859',
     margin: 20,
-  },
+    padding: 10,
+    borderWidth: 1,
+    },
 });
