@@ -50,7 +50,7 @@ export default StyleSheet.create({
     marginTop: 20,
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.20,
+    shadowOpacity: 0.2,
   },
   underTitle: {
     fontSize: 28,
@@ -79,12 +79,11 @@ export default StyleSheet.create({
     lineHeight: 20,
     fontFamily: "Anton_400Regular",
   },
- 
 
-  // Add styles for the search bar
+  // Styles for the search bar
   searchBar: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     height: 40,
     borderRadius: 10,
     paddingLeft: 10,
@@ -102,19 +101,97 @@ export default StyleSheet.create({
     flex: 1,
   },
   clearIconContainer: {
-    position: 'absolute',
+    position: "absolute",
     right: 10,
   },
 
-  // Add styles for the button
+  // Styles for the camera screen
+  cameraContainer: {
+    flex: 1,
+    // justifyContent: "center",
+    alignSelf: "center",
+    width: "80%",
+    // marginTop: 0,
+    borderRadius: 20,
+    // backgroundColor: "#F7F5F5",
+    overflow: "hidden",
+  },
+  camera: {
+    flex: 1,
+    overflow: "hidden",
+    //width: "100%",
+    // flexDirection: "column",
+    justifyContent: "flex-end",
+  },
+  buttonContainer: {
+    flexDirection: "row",
+    backgroundColor: "transparent",
+    margin: 32,
+    alignSelf: "center",
+  },
+
+  buttonGallery: {
+    fontSize: 15,
+    color: "white",
+    padding: 10,
+    borderRadius: 10,
+    alignSelf: "center",
+  },
+  gallery: {
+    flex: 0.2,
+    paddingTop: 10,
+    width: "100%",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#F7F5F5",
+  },
+  cameraBackground: {
+    backgroundColor: "#F7F5F5",
+    flex: 1,
+    justifyContent: "center",
+    width: "100%",
+  },
+  camerabtn: {
+    backgroundColor: "rgba(255, 255, 255, 0.25)",
+    borderRadius: 100,
+    justifyContent: "center",
+  },
+  snapbtn: {
+    backgroundColor: "rgba(255, 255, 255, 0.25)",
+    height: 80,
+    width: 80,
+    borderRadius: 100,
+    padding: 10,
+    margin: 5,
+    alignSelf: "center",
+    borderWidth: 4,
+    borderColor: "white",
+    justifyContent: "center",
+  },
+  flipbtn: {
+    backgroundColor: "rgba(255, 255, 255, 0.25)",
+    borderRadius: 100,
+    padding: 5,
+    alignSelf: "baseline",
+    justifyContent: "center",
+  },
+  gallerybtn: {
+    backgroundColor: "rgba(255, 255, 255, 0.25)",
+    borderRadius: 100,
+    padding: 5,
+    alignSelf: "flex-end",
+    justifyContent: "center",
+  },
+
+  // Styles for the button
   button: {
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     paddingVertical: 12,
     paddingHorizontal: 32,
     borderRadius: 50,
     elevation: 3,
-    backgroundColor: 'pink',
+    backgroundColor: "pink",
     margin: 20,
-    },
+  },
 });
