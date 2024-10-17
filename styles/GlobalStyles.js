@@ -79,6 +79,14 @@ export default StyleSheet.create({
     fontFamily: "Anton_400Regular",
   },
 
+  // Styles for the product image
+  foodImage: {
+    width: 120,
+    height: 100,
+    alignItems: "center",
+  },
+ 
+
   // Styles for the search bar
   searchBar: {
     flexDirection: "row",
@@ -187,13 +195,13 @@ export default StyleSheet.create({
 
   // Styles for the button
   button: {
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     borderRadius: 10,
-    backgroundColor: '#f9f9f9',
-    borderColor: '#967859',
+    backgroundColor: "#f9f9f9",
+    borderColor: "#967859",
     margin: 20,
     padding: 10,
     borderWidth: 1,
-    },
+  },
 });

@@ -2,27 +2,18 @@ import { StatusBar } from "expo-status-bar";
 import { Text, View, Image, SafeAreaView } from "react-native";
 import GlobalStyles from "../../styles/GlobalStyles";
 import { useState } from "react";
-import GreenerGoodsComponent from "../../components/GreenerGoods";
 import GGlogoComponent from "../../components/GGlogo";
+import ProductImage from "../../components/ProductImage";
+
 
 export default function ProductDetails({ route, navigation }) {
   const { product } = route.params;
   return (
     <SafeAreaView style={GlobalStyles.container}>
-      <GGlogoComponent />
+          <GGlogoComponent />
       <View style={[GlobalStyles.productContainer, GlobalStyles.box]}>
         <Text style={GlobalStyles.underTitle}>{product.Produkt}</Text>
-        {product.Produkt === "Agurk" && (
-          <Image
-            source={require("../../assets/food/agurk.png")}
-            style={{
-              width: 120,
-              height: 100,
-              alignSelf: "flex-end",
-              marginRight: 10,
-            }}
-          />
-        )}
+        <ProductImage product={product} />
         <Text style={GlobalStyles.text}>
           CO2 aftryk: {product.Total_kg_CO2e_pr_kg.toFixed(2)} kg CO2e/kg {"\n"}
         </Text>
