@@ -11,10 +11,8 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import GlobalStyles from "./styles/GlobalStyles";
 
 // screens
-import Coop from "./screens/CoopScreen";
+
 import Home from "./screens/HomeScreen";
-
-
 
 import Profile from "./screens/ProfileScreen";
 import GreenFeed from "./screens/GreenFeedScreen";
@@ -81,18 +79,7 @@ const Tab = createBottomTabNavigator();
   return (
     <NavigationContainer>
       <Tab.Navigator>
-        <Tab.Screen
-          name=" "
-          component={Coop}
-          options={{
-            tabBarIcon: () => (
-              <Image
-                source={require("./assets/coop.png")}
-                style={{ width: 30, height: 30 }}
-              />
-            ),
-          }}
-        />
+       
         <Tab.Screen
           name="Hjem"
           component={Home}
