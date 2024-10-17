@@ -85,7 +85,6 @@ export default StyleSheet.create({
     height: 100,
     alignItems: "center",
   },
- 
 
   // Styles for the search bar
   searchBar: {

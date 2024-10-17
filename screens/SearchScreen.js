@@ -9,10 +9,11 @@ import {
   TouchableOpacity,
 } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
+
 import { getDatabase, ref, get } from "firebase/database";
+
 import GlobalStyles from "../styles/GlobalStyles";
 import GreenerGoodsComponent from "../components/GreenerGoods";
-import Icon from "react-native-vector-icons/Ionicons";
 
 const ProductItem = memo(({ item, onPress }) => (
   <TouchableOpacity style={GlobalStyles.productItem} onPress={onPress}>

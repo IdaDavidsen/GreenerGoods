@@ -10,7 +10,7 @@ const ProductImage = ({ product }) => {
     Broccoli: require('../assets/food/broccoli.webp'),
     Dild: require('../assets/food/dild.webp'),
     Græskar: require('../assets/food/graeskar.webp'),
-    Æbler: require('../assets/food/aebler.webp'),
+    Æble: require('../assets/food/aebler.webp'),
   };
 
   const imageSource = images[product.Produkt];
