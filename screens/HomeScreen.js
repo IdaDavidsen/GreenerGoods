@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { StatusBar } from "expo-status-bar";
-import { ScrollView, Text, View, Image } from "react-native";
+import { ScrollView, Text, View, SafeAreaView, Image } from "react-native";
 import GlobalStyles from "../styles/GlobalStyles";
 import { getDatabase, ref, get } from "firebase/database"; // Import necessary functions from Firebase
 import GreenerGoodsComponent from "../components/GreenerGoods";
@@ -50,7 +50,7 @@ export default function Home() {
   };
 
   return (
-    <View style={GlobalStyles.container}>
+    <SafeAreaView style={GlobalStyles.container}>
       <GreenerGoodsComponent />
       <Text style={GlobalStyles.underTitle}>Varer i sæson</Text>
       <ScrollView vertical={true} style={{ marginVertical: 10 }}>
@@ -71,6 +71,6 @@ export default function Home() {
       </ScrollView>
      
       <StatusBar style="auto" />
-    </View>
+    </SafeAreaView>
   );
 }

@@ -15,6 +15,7 @@ import {
 import Ionicons from "react-native-vector-icons/Ionicons";
 import GlobalStyles from "../styles/GlobalStyles";
 import { getDatabase, ref, get } from "firebase/database";
+import GreenerGoodsComponent from "../components/GreenerGoods";
 
 export default function CameraFeature({ navigation }) {
   const [permission, requestPermission] = Camera.useCameraPermissions();
@@ -95,8 +96,8 @@ export default function CameraFeature({ navigation }) {
   }
 
   return (
-    <SafeAreaView style={GlobalStyles.cameraBackground}>
-      <Text style={GlobalStyles.title}>Greener Goods</Text>
+    <SafeAreaView style={[GlobalStyles.cameraBackground, GlobalStyles.container]}>
+         <GreenerGoodsComponent />
       <Text style={GlobalStyles.underTitle}>Scan dit produkt her</Text>
       <View style={GlobalStyles.cameraContainer}>
         <Camera style={GlobalStyles.camera} type={type} ref={cameraRef}>
