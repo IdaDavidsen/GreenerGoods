@@ -13,13 +13,18 @@ import GlobalStyles from "./styles/GlobalStyles";
 // screens
 import Coop from "./screens/CoopScreen";
 import Home from "./screens/HomeScreen";
+
+
+
 import Profile from "./screens/ProfileScreen";
 import GreenFeed from "./screens/GreenFeedScreen";
 import Search from "./screens/SearchScreen";
 import SearchStackComponent from "./components/SearchStackComponent";
 import ProfileStackComponent from "./components/ProfileStackComponent";
+import ScanStackComponent from "./components/ScanStackComponent";
 import GreenFeedScreen from "./screens/GreenFeedScreen";
 import Scan from "./screens/ScanScreen";
+
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -104,9 +109,9 @@ const Tab = createBottomTabNavigator();
           options={{ tabBarIcon: () => <Ionicons name="search" size={20} /> }}
         />
         <Tab.Screen
-        name="Scan"
-        component={Scan}
-        options={{ tabBarIcon: () => <Ionicons name="camera" size={20} /> }}
+          name="Scan"
+          component={ScanStackComponent}
+          options={{ tabBarIcon: () => <Ionicons name="camera" size={20} /> }}
         />
         <Tab.Screen
           name="Profil"
