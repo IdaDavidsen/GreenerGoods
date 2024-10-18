@@ -42,7 +42,7 @@ export default function ProductDetails({ route, navigation }) {
         <TouchableOpacity 
           style={GlobalStyles.button}
           >
-          <Text>Tilføj vare til indkøbsliste</Text>
+          <Text style={GlobalStyles.text}>Tilføj varen til din indkøbsliste</Text>
         </TouchableOpacity>
         <View style={{ flex: 1, justifyContent: "flex-end" }}>
           <Text style={[GlobalStyles.smallText, GlobalStyles.textToLeft]}>

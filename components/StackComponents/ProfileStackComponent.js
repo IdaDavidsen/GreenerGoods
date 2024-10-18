@@ -19,9 +19,9 @@ export default function ProfileStackComponent() {
         component={ProfileScreen}
         options={{ headerShown: null }}
       />
-      <Stack.Screen name={"ShoppingList"} component={ShoppingList} />
-      <Stack.Screen name={"Saved"} component={Saved} />
-      <Stack.Screen name={"BehindGG"} component={BehindGG} />
+      <Stack.Screen name={"ShoppingList"} component={ShoppingList} options={{ headerShown: null }}/>
+      <Stack.Screen name={"Saved"} component={Saved} options={{ headerShown: null }}/>
+      <Stack.Screen name={"BehindGG"} component={BehindGG} options={{ headerShown: null }}/>
     </Stack.Navigator>
   );
 }
