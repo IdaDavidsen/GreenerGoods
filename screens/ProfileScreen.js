@@ -1,6 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import { Button, SafeAreaView, StyleSheet, Text, TextInput, View, TouchableOpacity } from "react-native";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 
 // Andre filer og komponenter
 import SignUpForm from "../components/SignUpComponent";
@@ -12,19 +13,69 @@ import ShoppingList from "./StackScreens/ShoppingList";
 import Saved from "./StackScreens/Saved";
 
 export default function ProfileScreen({navigation}) {
-  // styer login/signup tilstanden
+  // styrer login/signup tilstanden
   const [isLogin, setIsLogin] = useState(true);
   // styrer om inputflerne vises
   const [showInput, setShowInput] = useState(false);
   
+  const auth = getAuth();
+  //const user = auth.currentUser;
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      // Fjerner inputfelterne hvis brugeren er logget ind
+      if (currentUser) {
+        setShowInput(false);
+      }
+    });
+    return () => unsubscribe();
+  }, [auth]);
+
+  // Log ud funktion
+  const handleLogOut = async () => {
+    await signOut(auth).then(() => {
+      // Sign-out successful.
+    }).catch((error) => {
+      // An error happened.
+    });
+  };
+
   return (
      <SafeAreaView style={GlobalStyles.container}>
      <GreenerGoodsComponent/>
      <View style={ProfileStyles.container}>
-        <Text style={GlobalStyles.text}>Hej</Text>
+        
+      <View style={{ marginVertical: 20 }}>
+                {!user ? (
+                  <Text style={GlobalStyles.text}>Email: Du er ikke logget ind</Text>
+                ) : (
+                  <View>
+                    <Text style={GlobalStyles.text}>Email: {user.email}</Text>
+                    <TouchableOpacity
+        onPress={handleLogOut}>
+        </TouchableOpacity>
+                  </View>
+                )}
+      </View>
         <View style={ProfileStyles.ProfileButtons}>
-        <TouchableOpacity onPress={() => setShowInput(true)}> 
-          <Text style={ProfileStyles.buttonText}>Log ind</Text>
+        <TouchableOpacity 
+          onPress={() => {
+            if(!user) {
+              setShowInput(true);
+            } else {
+              handleLogOut();
+            }
+          }}
+            > 
+        {!user ? (
+                  <Text style={ProfileStyles.buttonText}>Log ind</Text>
+                ) : (
+                  <View>
+                    <Text style={ProfileStyles.buttonText}>Log ud</Text>
+                    </View>
+                    )}
         </TouchableOpacity>
         <TouchableOpacity
         onPress={() =>
@@ -51,7 +102,7 @@ export default function ProfileScreen({navigation}) {
       ) : (
       <SignUpForm switchToLogin={() => setIsLogin(true)}/>
       )
-      )}
+      )}  
      </View>
         </SafeAreaView>
     );

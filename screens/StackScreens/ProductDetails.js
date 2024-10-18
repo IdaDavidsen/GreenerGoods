@@ -1,10 +1,13 @@
 import { StatusBar } from "expo-status-bar";
-import { Text, View, Image } from "react-native";
+import { Text, View, Image, TouchableOpacity } from "react-native";
 import GlobalStyles from "../../styles/GlobalStyles";
 import { useState } from "react";
+import { doc, updateDoc, setDoc, arrayUnion } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
 
 export default function ProductDetails({ route, navigation }) {
   const { product } = route.params;
+    
   return (
     <View style={GlobalStyles.container}>
       <Text style={GlobalStyles.title}>Greener Goods</Text>
@@ -37,6 +40,13 @@ export default function ProductDetails({ route, navigation }) {
         <Text style={GlobalStyles.text}>
           Kulhydrat indhold: {product.Kulhydrat_g_100g} g/100g
         </Text>
+        {/*Knap til at tilføje vare til indkøbsliste*/}
+        <TouchableOpacity
+          onPress={addToShoppingList} 
+          style={GlobalStyles.button}
+          >
+          <Text>Tilføj vare til indkøbsliste</Text>
+        </TouchableOpacity>
         <View style={{ flex: 1, justifyContent: "flex-end" }}>
           <Text style={[GlobalStyles.smallText, GlobalStyles.textToLeft]}>
             Dette data er fra Den Store Klimadatabase lavet af Concito
