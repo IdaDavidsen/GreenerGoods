@@ -1,9 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { StatusBar } from "expo-status-bar";
-import { ScrollView, Text, View, Image } from "react-native";
+import {
+  ScrollView,
+  Text,
+  View,
+  SafeAreaView,
+  Image,
+  TouchableOpacity,
+} from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { getDatabase, ref, get } from "firebase/database";
+
 import GlobalStyles from "../styles/GlobalStyles";
-import { getDatabase, ref, get } from "firebase/database"; // Import necessary functions from Firebase
 import GreenerGoodsComponent from "../components/GreenerGoods";
+import ProductImage from "../components/ProductImage";
 
 const monthNamesDanish = [
   "januar",
@@ -22,6 +32,7 @@ const monthNamesDanish = [
 
 export default function Home() {
   const [products, setProducts] = useState([]);
+  const navigation = useNavigation();
 
   // Products in season
   useEffect(() => {
@@ -40,7 +51,11 @@ export default function Home() {
       if (snapshot.exists()) {
         const productsData = snapshot.val();
         const productsInSeason = Object.keys(productsData)
-          .filter((key) => productsData[key].Season && productsData[key].Season.includes(currentMonthNameDanish))
+          .filter(
+            (key) =>
+              productsData[key].Season &&
+              productsData[key].Season.includes(currentMonthNameDanish)
+          )
           .map((key) => ({ id: key, ...productsData[key] }));
         setProducts(productsInSeason);
       }
@@ -50,27 +65,26 @@ export default function Home() {
   };
 
   return (
-    <View style={GlobalStyles.container}>
+    <SafeAreaView style={GlobalStyles.container}>
       <GreenerGoodsComponent />
       <Text style={GlobalStyles.underTitle}>Varer i sæson</Text>
       <ScrollView vertical={true} style={{ marginVertical: 10 }}>
         {products.map((product) => (
-          <View key={product.id} style={GlobalStyles.seasonContainer}>
+          <TouchableOpacity
+            key={product.id}
+            style={GlobalStyles.seasonContainer}
+            onPress={() => navigation.navigate("ProductDetails", { product })}
+          >
             <Text style={GlobalStyles.underTitle}>{product.Produkt}</Text>
-            {product.Produkt === "Agurk" && ( 
-              <Image
-                source={require("../assets/food/agurk.png")}
-                style={{ width: 120, height: 100 }}
-              />
-            )}
+            <ProductImage product={product} />
             <Text style={GlobalStyles.text}>
               CO2 aftryk: {product.Total_kg_CO2e_pr_kg.toFixed(2)} kg CO2e/kg
             </Text>
-          </View>
+          </TouchableOpacity>
         ))}
       </ScrollView>
-     
+
       <StatusBar style="auto" />
-    </View>
+    </SafeAreaView>
   );
 }

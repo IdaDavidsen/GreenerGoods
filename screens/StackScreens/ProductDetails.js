@@ -4,21 +4,22 @@ import GlobalStyles from "../../styles/GlobalStyles";
 import { useState } from "react";
 import { doc, updateDoc, setDoc, arrayUnion } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
+import { Text, View, Image, SafeAreaView } from "react-native";
+import GlobalStyles from "../../styles/GlobalStyles";
+import { useState } from "react";
+import GGlogoComponent from "../../components/GGlogo";
+import ProductImage from "../../components/ProductImage";
+
 
 export default function ProductDetails({ route, navigation }) {
   const { product } = route.params;
     
   return (
-    <View style={GlobalStyles.container}>
-      <Text style={GlobalStyles.title}>Greener Goods</Text>
+    <SafeAreaView style={GlobalStyles.container}>
+          <GGlogoComponent />
       <View style={[GlobalStyles.productContainer, GlobalStyles.box]}>
         <Text style={GlobalStyles.underTitle}>{product.Produkt}</Text>
-        {product.Produkt === "Agurk" && ( 
-              <Image
-                source={require("../../assets/food/agurk.png")}
-                style={{ width: 120, height: 100, alignSelf: "flex-end", marginRight: 10 }}
-              />
-            )}
+        <ProductImage product={product} />
         <Text style={GlobalStyles.text}>
           CO2 aftryk: {product.Total_kg_CO2e_pr_kg.toFixed(2)} kg CO2e/kg {"\n"}
         </Text>
@@ -54,6 +55,6 @@ export default function ProductDetails({ route, navigation }) {
         </View>
       </View>
       <StatusBar style="auto" />
-    </View>
+    </SafeAreaView>
   );
 }
