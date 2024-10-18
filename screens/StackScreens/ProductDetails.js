@@ -1,11 +1,8 @@
 import { StatusBar } from "expo-status-bar";
-import { Text, View, Image, TouchableOpacity } from "react-native";
+import { Text, View, Image, TouchableOpacity, SafeAreaView } from "react-native";
 import GlobalStyles from "../../styles/GlobalStyles";
-import { useState } from "react";
 import { doc, updateDoc, setDoc, arrayUnion } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
-import { Text, View, Image, SafeAreaView } from "react-native";
-import GlobalStyles from "../../styles/GlobalStyles";
 import { useState } from "react";
 import GGlogoComponent from "../../components/GGlogo";
 import ProductImage from "../../components/ProductImage";
@@ -42,8 +39,7 @@ export default function ProductDetails({ route, navigation }) {
           Kulhydrat indhold: {product.Kulhydrat_g_100g} g/100g
         </Text>
         {/*Knap til at tilføje vare til indkøbsliste*/}
-        <TouchableOpacity
-          onPress={addToShoppingList} 
+        <TouchableOpacity 
           style={GlobalStyles.button}
           >
           <Text>Tilføj vare til indkøbsliste</Text>
