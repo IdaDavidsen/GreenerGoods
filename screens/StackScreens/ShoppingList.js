@@ -3,56 +3,94 @@ import React from 'react';
 import { View, Text, SafeAreaView, FlatList, TouchableOpacity } from 'react-native';
 import GGlogoComponent from '../../components/GGlogo';
 import GlobalStyles from '../../styles/GlobalStyles';
-import { collection, getDocs } from 'firebase/firestore';
 import { useState, useEffect } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { getAuth } from 'firebase/auth';
+import { getDatabase, ref, get, remove } from 'firebase/database';
 
 export default function ShoppingList({route}) {
- 
-  /*const [products, setProducts] = useState([]);
+  const [shoppingList, setShoppingList] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const fetchProducts = async () => {
-    const querySnapshot = await getDocs(collection(db, "products"));
-    const products = [];
-    querySnapshot.forEach((doc) => {
-      products.push(doc.data());
-    });
-    setProducts(products);
-    setLoading(false);
-  };
-
   useEffect(() => {
-    fetchProducts();
+    const fetchShoppingList = async () => {
+      try {
+        const auth = getAuth();
+        const user = auth.currentUser;
+
+        if (user) {
+          const db = getDatabase();
+          const shoppingListRef = ref(db, `shoppingLists/${user.uid}`);
+          const snapshot = await get(shoppingListRef);
+
+          if (snapshot.exists()) {
+            const data = snapshot.val();
+            const products = Object.values(data); // konvertere object til array
+            setShoppingList(products);
+          } else {
+            console.log("No shopping list available");
+          }
+        }
+      } catch (error) {
+        console.error("Error fetching shopping list: ", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchShoppingList();
   }, []);
 
-  if(loading) {
-    return <Text>Indlæser indkøbsliste</Text>
-  }*/
+  // Funktion til at fjerne varen fra indkøbslisten 
+  const removeFromShoppingList = async (productName) => {
+    try {
+      const auth = getAuth();
+      const user = auth.currentUser;
+
+      if (user) {
+        const db = getDatabase();
+        const productRef = ref(db, `shoppingLists/${user.uid}/${productName}`);
+
+        // Fjerne varen fra indkøbslisten 
+        await remove(productRef);
+
+        // Opdaterer the local state
+        setShoppingList((prevList) =>
+          prevList.filter((item) => item.Produkt !== productName)
+        );
+
+        console.log("Product removed from shopping list");
+      }
+    } catch (error) {
+      console.error("Error removing product: ", error);
+    }
+  };
+
+  // Render each product in the shopping list
+  const renderProductItem = ({ item }) => (
+    <View style={[GlobalStyles.productItem, { flexDirection: "row", justifyContent: "space-between" }]}>
+      <Text style={GlobalStyles.text}>{item.Produkt}</Text>
+      <TouchableOpacity onPress={() => removeFromShoppingList(item.Produkt)}>
+        <Text style={[GlobalStyles.text, { color: "red" }]}>Fjern</Text>
+      </TouchableOpacity>
+    </View>
+  );
 
   return (
     <SafeAreaView style={GlobalStyles.container}>
       <GGlogoComponent/>
      <Text style={GlobalStyles.underTitle}>Din indkøbsliste</Text>
-      {/* Her kan du tilføje din liste eller anden funktionalitet */}
-
-      <FlatList
-        //data={products} // Viser varerne fra Firestore
-        //keyExtractor={(product) => product.id}
-        //renderProduct={({ product }) => (
-         // <View style={{ padding: 10, borderBottomWidth: 1, borderColor: "#ccc" }}>
-         //   <Text>{product.name}</Text>  {/* Viser varenavn */}
-         // </View>
-        //)}
-      />
-      <View style={{flexDirection: 'row'}}>
-        <View style={{justifyContent: 'flex-start'}}>
-        <Text style={GlobalStyles.text}>Produktet</Text>
-        <Text style={GlobalStyles.text}>Co2 aftryk:</Text>
-        </View>
-        <TouchableOpacity title="tjek"></TouchableOpacity>
-
-      
-      </View>
+      {loading ? (
+        <Text style={GlobalStyles.text}>Henter indkøbsliste...</Text>
+      ) : shoppingList.length === 0 ? (
+        <Text style={GlobalStyles.text}>Du har ingen varer på din indkøbslisten</Text>
+      ) : (
+        <FlatList
+          data={shoppingList}
+          keyExtractor={(item, index) => index.toString()}
+          renderItem={renderProductItem}
+        />
+      )}
     </SafeAreaView>
   );
 }

@@ -4,9 +4,16 @@ import { StyleSheet, Text, View, Image } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { getApps, initializeApp } from "firebase/app";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useState, useEffect } from "react";
 import Ionicons from "react-native-vector-icons/Ionicons";
+
+// login
+import { getAuth, onAuthStateChanged, initializeAuth, getReactNativePersistence } from "firebase/auth";
+import ReactNativeAsyncStorage from "@react-native-async-storage/async-storage"
+import { getApp } from "firebase/app";
+
+
+
 
 // screens
 import Home from "./screens/HomeScreen";
@@ -31,11 +38,24 @@ const firebaseConfig = {
 export default function App() {
   const [user, setUser] = useState({ loggedIn: false });
   // Kontrollering af at der ikke allerede er en initialiseret instans af firebase
+  let app;
   if (getApps().length < 1) {
-    initializeApp(firebaseConfig);
+    app = initializeApp(firebaseConfig);
     console.log("Firebase On!");
+  } else {
+    app = getApp();
   }
-  const auth = getAuth();
+
+   // Initialize Firebase Auth hvis den ikke allerede er initialiseret
+   let auth;
+   try {
+     auth = getAuth(app); // Get existing auth instance
+   } catch (error) {
+     auth = initializeAuth(app, {
+       persistence: getReactNativePersistence(ReactNativeAsyncStorage),
+     });
+   }
+
   // Heri defineres en funktion, der tager en callback som argument, og returnerer en listener, der observerer om brugeren er logget ind eller ej.
   function onAuthStateChange(callback) {
     return onAuthStateChanged(auth, (user) => {
