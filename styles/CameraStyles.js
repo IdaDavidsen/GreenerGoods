@@ -4,19 +4,14 @@ import { StyleSheet } from "react-native";
 export default StyleSheet.create({
  cameraContainer: {
     flex: 1,
-    // justifyContent: "center",
     alignSelf: "center",
     width: "80%",
-    // marginTop: 0,
     borderRadius: 20,
-    // backgroundColor: "#F7F5F5",
     overflow: "hidden",
   },
   camera: {
     flex: 1,
     overflow: "hidden",
-    //width: "100%",
-    // flexDirection: "column",
     justifyContent: "flex-end",
   },
   buttonContainer: {
