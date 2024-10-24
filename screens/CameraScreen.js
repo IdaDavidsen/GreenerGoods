@@ -42,11 +42,10 @@ export default function CameraFeature({ navigation }) {
     );
   }
 
-  // Making a snapshot
+  // Takes a picture
   const snap = async () => {
     if (!cameraRef.current) {
       console.log("No camera ref");
-
       return;
     }
     setLoading(true);
@@ -54,8 +53,8 @@ export default function CameraFeature({ navigation }) {
     setImagesArr([...imagesArr, result]);
     setLoading(false);
   };
-  // Toggles the camera type
 
+  // Change between front and back camera
   function toggleCameraType() {
     setType((currentType) =>
       currentType === CameraType.back ? CameraType.front : CameraType.back
@@ -92,7 +91,7 @@ export default function CameraFeature({ navigation }) {
     );
   };
 
-  // Toggles the gallery
+  // Switch between camera and gallery
   function toggleGallery() {
     setGallery((current) => !current);
   }
