@@ -12,11 +12,8 @@ import { getAuth, onAuthStateChanged, initializeAuth, getReactNativePersistence 
 import ReactNativeAsyncStorage from "@react-native-async-storage/async-storage"
 import { getApp } from "firebase/app";
 
-
-
-
 // screens
-import Home from "./screens/HomeScreen";
+import HomeStackComponent from "./components/StackComponents/HomeStackComponent";
 import SearchStackComponent from "./components/StackComponents/SearchStackComponent";
 import ProfileStackComponent from "./components/StackComponents/ProfileStackComponent";
 import ScanStackComponent from "./components/StackComponents/ScanStackComponent";
@@ -95,7 +92,7 @@ export default function App() {
       >
         <Tab.Screen
           name="Hjem"
-          component={Home}
+          component={HomeStackComponent}
           options={{
             tabBarIcon: () => <Ionicons name="home" size={20} />,
             headerShown: false,
