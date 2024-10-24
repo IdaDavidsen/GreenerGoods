@@ -85,4 +85,16 @@ export default StyleSheet.create({
     height: 100,
     alignItems: "center",
   },
+
+    // Styles for the button
+    button: {
+      alignItems: "center",
+      justifyContent: "center",
+      borderRadius: 10,
+      backgroundColor: "#f9f9f9",
+      borderColor: "#967859",
+      margin: 20,
+      padding: 10,
+      borderWidth: 1,
+    },
 });
