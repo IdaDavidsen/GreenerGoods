@@ -1,3 +1,4 @@
+// Dette kode er stort set 1:1 til øvelsesopgaven, da vores fokus ikke har være på kamerafunktionen i dene iteration.
 import { useState, useRef } from "react";
 import { Camera, CameraType } from "expo-camera/legacy";
 import { StatusBar } from "expo-status-bar";
@@ -14,6 +15,7 @@ import {
 
 import Ionicons from "react-native-vector-icons/Ionicons";
 import GlobalStyles from "../styles/GlobalStyles";
+import CameraStyles from "../styles/CameraStyles";
 import { getDatabase, ref, get } from "firebase/database";
 import GreenerGoodsComponent from "../components/GreenerGoods";
 
@@ -62,7 +64,7 @@ export default function CameraFeature({ navigation }) {
 
   const CameraGallery = () => {
     return (
-      <View style={GlobalStyles.gallery}>
+      <View style={CameraStyles.gallery}>
         <Text style={GlobalStyles.textAlign}>
           Billeder taget: {imagesArr.length}
         </Text>
@@ -96,15 +98,15 @@ export default function CameraFeature({ navigation }) {
   }
 
   return (
-    <SafeAreaView style={[GlobalStyles.cameraBackground, GlobalStyles.container]}>
+    <SafeAreaView style={[CameraStyles.cameraBackground, GlobalStyles.container]}>
          <GreenerGoodsComponent />
       <Text style={GlobalStyles.underTitle}>Scan dit produkt her</Text>
-      <View style={GlobalStyles.cameraContainer}>
-        <Camera style={GlobalStyles.camera} type={type} ref={cameraRef}>
-          <View style={GlobalStyles.buttonContainer}>
+      <View style={CameraStyles.cameraContainer}>
+        <Camera style={CameraStyles.camera} type={type} ref={cameraRef}>
+          <View style={CameraStyles.buttonContainer}>
             <View style={{ flex: 1, alignSelf: "flex-end" }}>
               <TouchableOpacity
-                style={[GlobalStyles.camerabtn, GlobalStyles.flipbtn]}
+                style={[CameraStyles.camerabtn, CameraStyles.flipbtn]}
                 onPress={toggleCameraType}
               >
                 <Ionicons
@@ -116,7 +118,7 @@ export default function CameraFeature({ navigation }) {
             </View>
             <View style={{ flex: 1, alignSelf: "flex-end" }}>
               <TouchableOpacity
-                style={[GlobalStyles.camerabtn, GlobalStyles.snapbtn]}
+                style={[CameraStyles.camerabtn, CameraStyles.snapbtn]}
                 onPress={snap}
               >
                 <Text style={GlobalStyles.smallText}>
@@ -126,7 +128,7 @@ export default function CameraFeature({ navigation }) {
             </View>
             <View style={{ flex: 1, alignSelf: "flex-end" }}>
               <TouchableOpacity
-                style={[GlobalStyles.camerabtn, GlobalStyles.gallerybtn]}
+                style={[CameraStyles.camerabtn, CameraStyles.gallerybtn]}
                 onPress={toggleGallery}
               >
                 <Ionicons name="copy-outline" size={32} color="#fff" />
@@ -140,19 +142,3 @@ export default function CameraFeature({ navigation }) {
     </SafeAreaView>
   );
 }
-/*
-  return (
-    <View style={GlobalStyles.container}>
-      <Text style={GlobalStyles.title}>Greener Goods</Text>
-      <Text style={GlobalStyles.underTitle}>Scan dit produkt her</Text>
-      <View style={[GlobalStyles.productContainer, GlobalStyles.box]}>
-        <Image
-          source={require("../assets/cameraIcon.png")}
-          style={{ width: 120, height: 100, alignSelf: "center" }}
-        />
-      </View>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
-  */

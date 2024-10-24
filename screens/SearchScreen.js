@@ -13,6 +13,7 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import { getDatabase, ref, get } from "firebase/database";
 
 import GlobalStyles from "../styles/GlobalStyles";
+import SearchStyles from "../styles/SearchStyles";
 import GreenerGoodsComponent from "../components/GreenerGoods";
 
 const ProductItem = memo(({ item, onPress }) => (
@@ -69,17 +70,17 @@ export default function Search({ navigation }) {
       <Text style={GlobalStyles.underTitle}>
         Leder du efter noget specifikt?
       </Text>
-      <View style={[GlobalStyles.searchBar, GlobalStyles.box]}>
-        <Ionicons style={GlobalStyles.searchIcon} name="search" size={20} />
+      <View style={[SearchStyles.searchBar, GlobalStyles.box]}>
+        <Ionicons style={SearchStyles.searchIcon} name="search" size={20} />
         <TextInput
-          style={GlobalStyles.textInput}
+          style={SearchStyles.textInput}
           placeholder="Søg efter produkter her"
           value={query}
           onChangeText={setQuery}
         />
         {query !== "" && (
           <TouchableOpacity
-            style={GlobalStyles.clearIconContainer}
+            style={SearchStyles.clearIconContainer}
             onPress={() => setQuery("")}
           >
             <Ionicons name="close-circle" size={20} color="gray" />
@@ -90,7 +91,7 @@ export default function Search({ navigation }) {
       {/* Display the filtered products, and not before */}
       {query !== "" && (
         <FlatList
-          style={GlobalStyles.searchFlatlist}
+          style={SearchStyles.searchFlatlist}
           data={sortedProducts}
           keyExtractor={(item, index) =>
             item.id ? item.id.toString() : index.toString()
