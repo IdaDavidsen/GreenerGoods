@@ -70,7 +70,7 @@ export default function ProductDetails({ route, navigation }) {
           onPress={() => addToShoppingList(product)}
           disabled={isAdded}
           >
-          <Text style={GlobalStyles.text}>{ isAdded ? "Varen er tilføjet til din indkøbsliste" : "Tilføj varen til din indkøbsliste"}</Text>
+          <Text style={GlobalStyles.text}>{ isAdded ? "Varen er tilføjet til din indkøbsliste: Slet varen" : "Tilføj varen til din indkøbsliste"}</Text>
         </TouchableOpacity>
         <View style={{ flex: 1, justifyContent: "flex-end" }}>
           <Text style={[GlobalStyles.smallText, GlobalStyles.textToLeft]}>
