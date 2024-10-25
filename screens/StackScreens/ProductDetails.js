@@ -1,12 +1,13 @@
 import { StatusBar } from "expo-status-bar";
 import { Text, View, Image, TouchableOpacity, SafeAreaView, Alert } from "react-native";
 import GlobalStyles from "../../styles/GlobalStyles";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import GGlogoComponent from "../../components/GGlogo";
 import ProductImage from "../../components/ProductImage";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { getAuth } from "firebase/auth";
 import { getDatabase, ref, update } from "firebase/database";
+import RemoveButtonComponent from "../../components/RemoveButtonComponent";
 
 export default function ProductDetails({ route, navigation }) {
   const { product } = route.params;
@@ -65,13 +66,21 @@ export default function ProductDetails({ route, navigation }) {
           Kulhydrat indhold: {product.Kulhydrat_g_100g} g/100g
         </Text>
         {/*Knap til at tilføje vare til indkøbsliste*/}
-        <TouchableOpacity 
-          style={GlobalStyles.button}
-          onPress={() => addToShoppingList(product)}
-          disabled={isAdded}
+        {isAdded ? (
+          <RemoveButtonComponent
+            productName={product.Produkt}
+            onRemove={() => setIsAdded(false)}>
+              <Text style={GlobalStyles.text}>{"Varen er tilføjet til din indkøbsliste: Slet varen"}</Text>
+            </RemoveButtonComponent>
+          
+        ) : (
+          <TouchableOpacity 
+            style={GlobalStyles.button}
+            onPress={addToShoppingList}
           >
-          <Text style={GlobalStyles.text}>{ isAdded ? "Varen er tilføjet til din indkøbsliste: Slet varen" : "Tilføj varen til din indkøbsliste"}</Text>
-        </TouchableOpacity>
+            <Text style={GlobalStyles.text}>{ "Tilføj varen til din indkøbsliste"}</Text>
+          </TouchableOpacity>
+        )}
         <View style={{ flex: 1, justifyContent: "flex-end" }}>
           <Text style={[GlobalStyles.smallText, GlobalStyles.textToLeft]}>
             Dette data er fra Den Store Klimadatabase lavet af Concito

@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { getAuth } from 'firebase/auth';
 import { getDatabase, ref, get, remove } from 'firebase/database';
+import RemoveButtonComponent from '../../components/RemoveButtonComponent';
 
 export default function ShoppingList({route}) {
   const [shoppingList, setShoppingList] = useState([]);
@@ -41,40 +42,18 @@ export default function ShoppingList({route}) {
     fetchShoppingList();
   }, []);
 
-  // Funktion til at fjerne varen fra indkøbslisten 
-  const removeFromShoppingList = async (productName) => {
-    try {
-      const auth = getAuth();
-      const user = auth.currentUser;
-
-      if (user) {
-        const db = getDatabase();
-        const productRef = ref(db, `shoppingLists/${user.uid}/${productName}`);
-
-        // Fjerne varen fra indkøbslisten 
-        await remove(productRef);
-
-        // Opdaterer the local state
-        setShoppingList((prevList) =>
-          prevList.filter((item) => item.Produkt !== productName)
-        );
-
-        console.log("Product removed from shopping list");
-      }
-    } catch (error) {
-      console.error("Error removing product: ", error);
-    }
-  };
-
   // Render each product in the shopping list
-  const renderProductItem = ({ item }) => (
+  const renderProductItem = ({ item }) => {
+    // sikrer kun rendering, når der er produkter 
+    if (!item.Produkt|| !item.Produkt) return null;
+
+    return (
     <View style={[GlobalStyles.productItem, { flexDirection: "row", justifyContent: "space-between" }]}>
       <Text style={GlobalStyles.text}>{item.Produkt}</Text>
-      <TouchableOpacity onPress={() => removeFromShoppingList(item.Produkt)}>
-        <Text style={[GlobalStyles.text, { color: "red" }]}>Fjern</Text>
-      </TouchableOpacity>
+      <RemoveButtonComponent productName={item.Produkt} setShoppingList={setShoppingList} />
     </View>
   );
+}
 
   return (
     <SafeAreaView style={GlobalStyles.container}>

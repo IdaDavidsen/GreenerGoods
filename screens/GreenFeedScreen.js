@@ -13,7 +13,7 @@ export default function GreenFeedScreen() {
        </View>
        <View>
        <Text style={GlobalStyles.underTitle}>GreenFeed</Text>
-       <Text>Udforsk hvordan du kan lave lækker mad samtidig med at du passer på miljøet</Text>
+       <Text style={GlobalStyles.text}>Få inspiration til grønne tilbud</Text>
        </View>
        </SafeAreaView>
       );
