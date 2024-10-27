@@ -4,6 +4,7 @@ import SignUpForm from "../components/SignUpComponent";
 import LoginForm from "../components/LogInComponent";
 import GlobalStyles from "../styles/GlobalStyles";
 import GreenerGoodsComponent from "../components/GreenerGoods";
+import HavredrikTilbudComponent from "../components/Havredrik";
 
 export default function GreenFeedScreen() {
     return (
@@ -15,6 +16,12 @@ export default function GreenFeedScreen() {
        <Text style={GlobalStyles.underTitle}>GreenFeed</Text>
        <Text style={GlobalStyles.text}>Få inspiration til grønne tilbud</Text>
        </View>
+       
+       <View style={GlobalStyles.seasonContainer}>
+        <Text style={GlobalStyles.underTitle}>Naturli økologisk Havredrik</Text>
+        <HavredrikTilbudComponent/>
+       </View>
+       
        </SafeAreaView>
       );
   }

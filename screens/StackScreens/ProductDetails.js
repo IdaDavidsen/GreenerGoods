@@ -4,7 +4,6 @@ import GlobalStyles from "../../styles/GlobalStyles";
 import { useEffect, useState } from "react";
 import GGlogoComponent from "../../components/GGlogo";
 import ProductImage from "../../components/ProductImage";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { getAuth } from "firebase/auth";
 import { getDatabase, ref, update } from "firebase/database";
 import RemoveButtonComponent from "../../components/RemoveButtonComponent";
