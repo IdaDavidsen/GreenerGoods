@@ -124,7 +124,8 @@
       "Protein_g_100g": 0.6,
       "ID_food": "Cm135",
       "ID_pack": "Pa040",
-      "ID_retail": "Ma0332"
+      "ID_retail": "Ma0332",
+      "Season": "oktober"
     },
     {
       "ID_Ra": "Ra00007",
@@ -3255,7 +3256,7 @@
       "ID_food": "Cm029",
       "ID_pack": "Pa040",
       "ID_retail": "Ma0332",
-      "Season": "oktober"
+      "Season": "oktober, november"
     },
     {
       "ID_Ra": "Ra00156",
@@ -3276,7 +3277,8 @@
       "Protein_g_100g": 4.7,
       "ID_food": "Cm020",
       "ID_pack": "Pa040",
-      "ID_retail": "Ma0332"
+      "ID_retail": "Ma0332",
+      "Season": "oktober"
     },
     {
       "ID_Ra": "Ra00157",
@@ -4935,7 +4937,8 @@
       "Protein_g_100g": 0.3,
       "ID_food": "Cm004",
       "ID_pack": "Pa059",
-      "ID_retail": "Ma0332"
+      "ID_retail": "Ma0332",
+      "Season": "november"
     },
     {
       "ID_Ra": "Ra00236",
@@ -4956,7 +4959,8 @@
       "Protein_g_100g": 0.3,
       "ID_food": "Cm120",
       "ID_pack": "Pa059",
-      "ID_retail": "Ma0332"
+      "ID_retail": "Ma0332",
+      "Season": "november"
     },
     {
       "ID_Ra": "Ra00237",
@@ -5376,7 +5380,8 @@
       "Protein_g_100g": 2,
       "ID_food": "Cm132",
       "ID_pack": "Pa040",
-      "ID_retail": "Ma0332"
+      "ID_retail": "Ma0332",
+      "Season": "november"
     },
     {
       "ID_Ra": "Ra00257",
@@ -5397,7 +5402,8 @@
       "Protein_g_100g": 0.7,
       "ID_food": "Cm023",
       "ID_pack": "Pa040",
-      "ID_retail": "Ma0332"
+      "ID_retail": "Ma0332",
+      "Season": "oktober, november"
     },
     {
       "ID_Ra": "Ra00258",
@@ -5502,7 +5508,8 @@
       "Protein_g_100g": 1.4,
       "ID_food": "Cm003",
       "ID_pack": "Pa059",
-      "ID_retail": "Ma0332"
+      "ID_retail": "Ma0332",
+      "Season": "oktober"
     },
     {
       "ID_Ra": "Ra00263",
@@ -5607,7 +5614,8 @@
       "Protein_g_100g": 1.8,
       "ID_food": "Cm115",
       "ID_pack": "Pa040",
-      "ID_retail": "Ma0332"
+      "ID_retail": "Ma0332",
+      "Season": "oktober"
     },
     {
       "ID_Ra": "Ra00268",

@@ -9,7 +9,10 @@ const ProductImage = ({ product }) => {
     Blomkål: require('../assets/food/blomkal.png'),
     Broccoli: require('../assets/food/broccoli.webp'),
     Dild: require('../assets/food/dild.webp'),
+    Gulerod: require('../assets/food/gulerod.jpg'),
     Græskar: require('../assets/food/graeskar.webp'),
+    Kartoffel: require('../assets/food/kartoffel.webp'),
+    Pære: require('../assets/food/paere.png'),
     Æble: require('../assets/food/aebler.webp'),
   };
 
