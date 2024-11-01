@@ -1825,7 +1825,8 @@
       "Protein_g_100g": 13.7,
       "ID_food": "Fa0218",
       "ID_pack": "Pa066",
-      "ID_retail": "Ma0333"
+      "ID_retail": "Ma0333",
+      "Season": "december, januar"
     },
     {
       "ID_Ra": "Ra00088",
@@ -3341,7 +3342,8 @@
       "Protein_g_100g": 1.5,
       "ID_food": "Cm020",
       "ID_pack": "Pa040",
-      "ID_retail": "Ma0332"
+      "ID_retail": "Ma0332",
+      "Season": "januar"
     },
     {
       "ID_Ra": "Ra00160",
@@ -3509,7 +3511,8 @@
       "Protein_g_100g": 2,
       "ID_food": "Cm020",
       "ID_pack": "Pa040",
-      "ID_retail": "Ma0332"
+      "ID_retail": "Ma0332",
+      "Season": "december"
     },
     {
       "ID_Ra": "Ra00168",
@@ -3551,7 +3554,8 @@
       "Protein_g_100g": 2,
       "ID_food": "Cm087",
       "ID_pack": "Pa040",
-      "ID_retail": "Ma0332"
+      "ID_retail": "Ma0332",
+      "Season": "december"
     },
     {
       "ID_Ra": "Ra00170",
@@ -5445,7 +5449,8 @@
       "Protein_g_100g": 1.7,
       "ID_food": "Cm157",
       "ID_pack": "Pa040",
-      "ID_retail": "Ma0332"
+      "ID_retail": "Ma0332",
+      "Season": "december"
     },
     {
       "ID_Ra": "Ra00260",
@@ -5593,7 +5598,8 @@
       "Protein_g_100g": 1.2,
       "ID_food": "Cm115",
       "ID_pack": "Pa040",
-      "ID_retail": "Ma0332"
+      "ID_retail": "Ma0332",
+      "Season": "december"
     },
     {
       "ID_Ra": "Ra00267",
@@ -6140,7 +6146,8 @@
       "Protein_g_100g": 0.4,
       "ID_food": "Cm052",
       "ID_pack": "Pa059",
-      "ID_retail": "Ma0332"
+      "ID_retail": "Ma0332",
+      "Season": "december"
     },
     {
       "ID_Ra": "Ra00293",
@@ -10127,7 +10134,8 @@
       "Protein_g_100g": 2.5,
       "ID_food": "Cm101",
       "ID_pack": "Pa059",
-      "ID_retail": "Ma0332"
+      "ID_retail": "Ma0332",
+      "Season": "januar"
     },
     {
       "ID_Ra": "Ra00483",

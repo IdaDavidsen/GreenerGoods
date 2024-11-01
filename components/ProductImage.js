@@ -12,7 +12,14 @@ const ProductImage = ({ product }) => {
     Gulerod: require('../assets/food/gulerod.jpg'),
     Græskar: require('../assets/food/graeskar.webp'),
     Kartoffel: require('../assets/food/kartoffel.webp'),
+    Løg: require('../assets/food/loeg.png'),
+    Porre: require('../assets/food/porrer.webp'),
     Pære: require('../assets/food/paere.png'),
+    Rødbede: require('../assets/food/roedbede.png'),
+    Rødkål: require('../assets/food/roedkaal.png'),
+    Savoykål: require('../assets/food/savoykaal.webp'),
+    Torsk: require('../assets/food/torsk.png'),
+    Tranebær: require('../assets/food/tranebaer.png'),
     Æble: require('../assets/food/aebler.webp'),
   };
 

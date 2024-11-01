@@ -114,7 +114,7 @@ export default function App() {
             headerShown: false,
           }}
         />
-        <Tab.Screen
+       {/*<Tab.Screen
           name="Scan"
           component={ScanStackComponent}
           options={{
@@ -122,6 +122,7 @@ export default function App() {
             headerShown: false,
           }}
         />
+        */}
         <Tab.Screen
           name="Profil"
           component={ProfileStackComponent}
