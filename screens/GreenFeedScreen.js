@@ -5,6 +5,7 @@ import LoginForm from "../components/LogInComponent";
 import GlobalStyles from "../styles/GlobalStyles";
 import GreenerGoodsComponent from "../components/GreenerGoods";
 import HavredrikTilbudComponent from "../components/Havredrik";
+import KvicklyComponent from "../components/Kvickly";
 
 export default function GreenFeedScreen() {
     return (
@@ -18,8 +19,15 @@ export default function GreenFeedScreen() {
        </View>
        
        <View style={GlobalStyles.seasonContainer}>
-        <Text style={GlobalStyles.underTitle}>Naturli økologisk Havredrik</Text>
+        <View style={{flexDirection: 'row'}}>
+        <KvicklyComponent/>
+        <View style={{flexDirection: 'column'}}>
+        <Text style={GlobalStyles.underTitle}>Naturli økologisk</Text>
+        <Text style={GlobalStyles.underTitle}>Havredrik</Text>
+        </View>
+         </View>
         <HavredrikTilbudComponent/>
+        
        </View>
        
        </SafeAreaView>
