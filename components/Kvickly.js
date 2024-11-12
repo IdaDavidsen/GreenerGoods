@@ -20,10 +20,12 @@ const styles = StyleSheet.create({
     image: {
        width: imageWidth,
        height: imageHeight,
-       alignSelf: 'flex-start'
+       position: 'absolute',
+       top: 2,
+       left: 175,
    }, imageSize: {
        width: '100%',
-       height: 100,
+       height: 70,
    }
 });
 

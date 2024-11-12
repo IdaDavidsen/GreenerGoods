@@ -21,6 +21,9 @@ const HavredrikTilbudComponent = () => {
      image: {
         width: imageWidth,
         height: imageHeight,
+        position: 'absolute',
+        top: 70,
+        left: 90,
     }, imageSize: {
         width: '100%',
         height: 125,
