@@ -3,6 +3,7 @@ import { Text, TouchableOpacity } from "react-native";
 import GlobalStyles from "../styles/GlobalStyles";
 import { getAuth } from "firebase/auth";
 import { getDatabase, ref, remove } from "firebase/database";
+import Icon from 'react-native-vector-icons/MaterialIcons';
   
 const RemoveButtonComponent = ({ productName, setShoppingList, onRemove }) => {
   const handleRemove = async () => {
@@ -35,8 +36,8 @@ const RemoveButtonComponent = ({ productName, setShoppingList, onRemove }) => {
   };
 // <Text style={[GlobalStyles.text, { color: "red" }]}>Fjern</Text>
   return (
-    <TouchableOpacity onPress={handleRemove} style={[GlobalStyles.button]}>
-      <Text style={[GlobalStyles.text]}>Slet</Text>
+    <TouchableOpacity onPress={handleRemove}>
+      <Icon name="delete" size={24} color="#D9534F" />
     </TouchableOpacity>
   );
 };
