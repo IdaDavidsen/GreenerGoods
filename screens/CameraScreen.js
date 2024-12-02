@@ -1,6 +1,6 @@
 // Dette kode er stort set 1:1 til øvelsesopgaven, da vores fokus ikke har være på kamerafunktionen i dene iteration.
 import { useState, useRef } from "react";
-import { Camera, CameraType } from "expo-camera/legacy";
+import { Camera, CameraType } from "expo-camera";
 import { StatusBar } from "expo-status-bar";
 import {
   Button,
