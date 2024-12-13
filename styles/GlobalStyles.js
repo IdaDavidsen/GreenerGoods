@@ -1,4 +1,6 @@
-// green color: #1E6904
+// Grøn farve: #1E6904
+// Lys grøn farve: #6E8840
+// Brun farve: #967859
 
 import { StyleSheet } from "react-native";
 
@@ -71,9 +73,16 @@ export default StyleSheet.create({
   textToLeft: {
     textAlign: "left",
   },
+  mediumText: {
+    fontSize: 16,
+    color: "#967859",
+    fontWeight: "bold",
+    lineHeight: 30,
+    fontFamily: "Anton_400Regular",
+  },
   smallText: {
     fontSize: 14,
-    color: "#dfd3c3",
+    color: "#DCCEBB",
     fontWeight: "bold",
     lineHeight: 20,
     fontFamily: "Anton_400Regular",
@@ -86,15 +95,21 @@ export default StyleSheet.create({
     alignItems: "center",
   },
 
-    // Styles for the button
-    button: {
-      alignItems: "center",
-      justifyContent: "center",
-      borderRadius: 10,
-      backgroundColor: "#f9f9f9",
-      borderColor: "#967859",
-      margin: 20,
-      padding: 10,
-      borderWidth: 1,
-    },
+  // Styles for the button
+  button: {
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#f9f9f9",
+    borderColor: "#6E8840",
+    padding: 10,
+    borderRadius: 10,
+    marginVertical: 10,
+    borderWidth: 1,
+  },
+
+  buttonText: {
+    color: "#6E8840",
+    fontWeight: "bold",
+    fontFamily: "Anton_400Regular",
+  },
 });
