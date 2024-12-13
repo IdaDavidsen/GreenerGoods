@@ -1,6 +1,5 @@
 import { StyleSheet } from "react-native";
 
- // Styles for the camera screen
 export default StyleSheet.create({
  cameraContainer: {
     flex: 1,

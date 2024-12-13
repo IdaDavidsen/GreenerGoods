@@ -1,5 +1,3 @@
-// green color: #1E6904
-
 import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({

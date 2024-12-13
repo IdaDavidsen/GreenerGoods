@@ -7,6 +7,7 @@ import {
   SafeAreaView,
   Alert,
 } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import GlobalStyles from "../../styles/GlobalStyles";
 import ProductStyles from "../../styles/ProductStyles";
 
@@ -22,12 +23,10 @@ import FoldOutMenuComponent from "../../components/FoldOutMenuComponent";
 
 export default function ProductDetails({ route, navigation }) {
   const { product } = route.params;
-  // bruges til skalaen af co2 udledning
   const [products, setProducts] = useState([]);
   const [scaleRange, setScaleRange] = useState({ min: 0, max: 0 });
-
-  // bruges til indkøbskurv-funktionen
   const [isAdded, setIsAdded] = useState(false);
+  const [isSaved, setIsSaved] = useState(false);
 
   // Funktion til at hente produkter fra samme kategori som det valgte produkt
   useEffect(() => {
@@ -55,7 +54,7 @@ export default function ProductDetails({ route, navigation }) {
   const getScalePosition = (value) => {
     const { min, max } = scaleRange;
     const numericValue = parseFloat(value);
-    if (isNaN(numericValue)) return 0; // Handle non-numeric values
+    if (isNaN(numericValue)) return 0; // Håndtering af non-numeric værdier
     return ((numericValue - min) / (max - min)) * 100;
   };
 
@@ -81,6 +80,31 @@ export default function ProductDetails({ route, navigation }) {
       }
     } catch (error) {
       console.error("Error adding to shopping list: ", error);
+    }
+  };
+
+  // Funktion til at gemme et produkt som favorit
+  const addToSaved = async () => {
+    try {
+      const auth = getAuth();
+      const user = auth.currentUser;
+
+      if (user) {
+        const db = getDatabase();
+        const userSavedProductsRef = ref(db, `savedProducts/${user.uid}`);
+
+        // Add the product to the saved products list
+        await update(userSavedProductsRef, {
+          [product.Produkt]: product,
+        });
+
+        setIsSaved(true);
+        console.log("Product saved!");
+      } else {
+        console.log("User is not logged in");
+      }
+    } catch (error) {
+      console.error("Error saving product: ", error);
     }
   };
 
@@ -131,9 +155,11 @@ export default function ProductDetails({ route, navigation }) {
           <RemoveButtonComponent
             productName={product.Produkt}
             onRemove={() => setIsAdded(false)}
+            showIcon={false}
+            referenceType="shoppingLists"
           >
-            <Text style={GlobalStyles.text}>
-              {"Varen er tilføjet til din indkøbsliste: Slet varen"}
+            <Text style={GlobalStyles.buttonText}>
+              {"Slet varen fra indkøbslisten"}
             </Text>
           </RemoveButtonComponent>
         ) : (
@@ -146,6 +172,28 @@ export default function ProductDetails({ route, navigation }) {
             </Text>
           </TouchableOpacity>
         )}
+
+        {/*Knap til at gemme favorit varer*/}
+        {isSaved ? (
+          <RemoveButtonComponent
+            productName={product.Produkt}
+            onRemove={() => setIsSaved(false)}
+            showIcon={false}
+            referenceType="savedProducts"
+          >
+            <Text style={GlobalStyles.buttonText}>
+              {"Slet varen fra favoritter"}
+            </Text>
+          </RemoveButtonComponent>
+        ) : (
+          <TouchableOpacity style={GlobalStyles.button} onPress={addToSaved}>
+            <Text style={GlobalStyles.buttonText}>
+              {"Gem varen som en favorit"}
+            </Text>
+          </TouchableOpacity>
+        )}
+
+        {/*det med småt*/}
         <View style={{ flex: 1, justifyContent: "flex-end" }}>
           <Text style={[GlobalStyles.smallText, GlobalStyles.textToLeft]}>
             Husk, at tallene ikke er direkte sammenlignelige, da man spiser

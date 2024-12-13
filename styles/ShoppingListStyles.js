@@ -1,6 +1,5 @@
 import { StyleSheet } from "react-native";
 
-// Styles for the search bar
 export default StyleSheet.create({
     productCard: {
         backgroundColor: '#fff',

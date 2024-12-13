@@ -1,6 +1,5 @@
 import { StyleSheet } from "react-native";
 
-// Styles for the search bar
 export default StyleSheet.create({
 searchBar: {
     flexDirection: "row",
