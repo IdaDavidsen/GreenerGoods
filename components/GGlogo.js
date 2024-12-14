@@ -17,12 +17,8 @@ const GGlogoComponent = () => {
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={() => navigation.goBack()}>
-      <Ionicons
-        style={styles.arrow}
-        name="arrow-back"
-        size={24}
-      />
-        </TouchableOpacity>
+        <Ionicons style={styles.arrow} name="arrow-back" size={24} />
+      </TouchableOpacity>
       <Image
         style={styles.image}
         source={require("../assets/Logo.png")}

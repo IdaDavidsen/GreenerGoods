@@ -5,41 +5,41 @@
 import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
-  container: {
+  error: {
+    color: "red",
+    fontFamily: "Anton_400Regular",
+  },
+  background: {
     flex: 1,
     backgroundColor: "#F7F5F5",
     alignItems: "center",
     justifyContent: "flex-start",
     padding: 20,
   },
-  seasonContainer: {
-    alignItems: "center",
-    justifyContent: "center", // Center content vertically
-    marginHorizontal: 10,
-    marginTop: 20,
-    padding: 10,
-    borderRadius: 10,
+  container: {
     backgroundColor: "#f9f9f9",
-    height: 200,
-    // Add shadow to the product container
+    borderRadius: 10,
+    padding: 16,
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.25,
+    shadowRadius: 5,
   },
-  box: {
-    width: "90%",
+  smallContainer: {
+    height: 200,
+    width: 350,
+    marginHorizontal: 10,
+    marginTop: 20,
+  },
+  seasonContainer: {
+    alignItems: "center",
+    justifyContent: "center", // Center content vertically
   },
   productContainer: {
     alignItems: "left",
     height: "85%",
+    width: "90%",
     marginVertical: 10,
-    padding: 10,
-    borderRadius: 10,
-    backgroundColor: "#f9f9f9",
-    // Add shadow to the product container
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.25,
   },
 
   // text styles

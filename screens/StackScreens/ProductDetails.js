@@ -1,20 +1,12 @@
 import { StatusBar } from "expo-status-bar";
-import {
-  Text,
-  View,
-  Image,
-  TouchableOpacity,
-  SafeAreaView,
-  Alert,
-} from "react-native";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Text, View, TouchableOpacity, SafeAreaView } from "react-native";
 import GlobalStyles from "../../styles/GlobalStyles";
 import ProductStyles from "../../styles/ProductStyles";
 
 import { useEffect, useState } from "react";
 import { getAuth } from "firebase/auth";
 import { getDatabase, ref, update } from "firebase/database";
-import { fetchProductsByCategory } from "../../api/api"; // Importer funktionen til at hente produkter fra api.js
+import { fetchProductsByCategory } from "../../api/api";
 
 import GGlogoComponent from "../../components/GGlogo";
 import ProductImage from "../../components/ProductImage";
@@ -68,7 +60,6 @@ export default function ProductDetails({ route, navigation }) {
         const db = getDatabase();
         const userShoppingListRef = ref(db, `shoppingLists/${user.uid}`);
 
-        // Tilføjer varen til indkøbsliste
         await update(userShoppingListRef, {
           [product.Produkt]: product,
         });
@@ -93,7 +84,6 @@ export default function ProductDetails({ route, navigation }) {
         const db = getDatabase();
         const userSavedProductsRef = ref(db, `savedProducts/${user.uid}`);
 
-        // Add the product to the saved products list
         await update(userSavedProductsRef, {
           [product.Produkt]: product,
         });
@@ -109,9 +99,9 @@ export default function ProductDetails({ route, navigation }) {
   };
 
   return (
-    <SafeAreaView style={GlobalStyles.container}>
+    <SafeAreaView style={GlobalStyles.background}>
       <GGlogoComponent />
-      <View style={[GlobalStyles.productContainer, GlobalStyles.box]}>
+      <View style={[ GlobalStyles.container, GlobalStyles.productContainer]}>
         <Text style={GlobalStyles.underTitle}>{product.Produkt}</Text>
         <ProductImage product={product} />
         <Text style={GlobalStyles.text}>

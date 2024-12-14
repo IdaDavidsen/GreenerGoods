@@ -1,13 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { StatusBar } from "expo-status-bar";
-import {
-  ScrollView,
-  Text,
-  View,
-  SafeAreaView,
-  Image,
-  TouchableOpacity,
-} from "react-native";
+import { ScrollView, Text, SafeAreaView, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { getDatabase, ref, get } from "firebase/database";
 
@@ -65,14 +58,18 @@ export default function Home() {
   };
 
   return (
-    <SafeAreaView style={GlobalStyles.container}>
+    <SafeAreaView style={GlobalStyles.background}>
       <GreenerGoodsComponent />
       <Text style={GlobalStyles.underTitle}>Varer i sæson</Text>
       <ScrollView vertical={true} style={{ marginVertical: 10 }}>
         {products.map((product) => (
           <TouchableOpacity
             key={product.id}
-            style={GlobalStyles.seasonContainer}
+            style={[
+              GlobalStyles.container,
+              GlobalStyles.smallContainer,
+              GlobalStyles.seasonContainer,
+            ]}
             onPress={() => navigation.navigate("ProductDetails", { product })}
           >
             <Text style={GlobalStyles.underTitle}>{product.Produkt}</Text>

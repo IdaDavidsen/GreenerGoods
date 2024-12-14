@@ -8,9 +8,8 @@ import {
   SafeAreaView,
   TouchableOpacity,
 } from "react-native";
-import Ionicons from "react-native-vector-icons/Ionicons";
-
 import { getDatabase, ref, get } from "firebase/database";
+import Ionicons from "react-native-vector-icons/Ionicons";
 
 import GlobalStyles from "../styles/GlobalStyles";
 import SearchStyles from "../styles/SearchStyles";
@@ -65,7 +64,7 @@ export default function Search({ navigation }) {
   );
 
   return (
-    <SafeAreaView style={GlobalStyles.container}>
+    <SafeAreaView style={GlobalStyles.background}>
       <GreenerGoodsComponent />
       <Text style={GlobalStyles.underTitle}>
         Leder du efter noget specifikt?

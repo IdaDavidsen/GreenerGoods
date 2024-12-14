@@ -5,9 +5,13 @@ import { getApps, initializeApp } from "firebase/app";
 import { useState, useEffect } from "react";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
-// login
-import { getAuth, onAuthStateChanged, initializeAuth, getReactNativePersistence } from "firebase/auth";
-import ReactNativeAsyncStorage from "@react-native-async-storage/async-storage"
+import {
+  getAuth,
+  onAuthStateChanged,
+  initializeAuth,
+  getReactNativePersistence,
+} from "firebase/auth";
+import ReactNativeAsyncStorage from "@react-native-async-storage/async-storage";
 import { getApp } from "firebase/app";
 
 // screens
@@ -16,7 +20,7 @@ import SearchStackComponent from "./components/StackComponents/SearchStackCompon
 import ProfileStackComponent from "./components/StackComponents/ProfileStackComponent";
 import GreenFeedScreen from "./screens/GreenFeedScreen";
 
-// Your web app's Firebase configuration
+// Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyBrTaP41sy8mc5Tusm1--bJLu0vwz9ih3s",
   authDomain: "greenergoods.firebaseapp.com",
@@ -40,27 +44,26 @@ export default function App() {
     app = getApp();
   }
 
-   // Initialize Firebase Auth hvis den ikke allerede er initialiseret
-   let auth;
-   try {
-     auth = getAuth(app); // Get existing auth instance
-   } catch (error) {
-     auth = initializeAuth(app, {
-       persistence: getReactNativePersistence(ReactNativeAsyncStorage),
-     });
-   }
+  // Initialize Firebase Auth hvis den ikke allerede er initialiseret
+  let auth;
+  try {
+    auth = getAuth(app);
+  } catch (error) {
+    auth = initializeAuth(app, {
+      persistence: getReactNativePersistence(ReactNativeAsyncStorage),
+    });
+  }
 
   // Heri defineres en funktion, der tager en callback som argument, og returnerer en listener, der observerer om brugeren er logget ind eller ej.
   function onAuthStateChange(callback) {
     return onAuthStateChanged(auth, (user) => {
       if (user) {
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/auth.user
+        // User er signed in
         const uid = user.uid;
         callback({ loggedIn: true, user: user });
         console.log("You are logged in!");
       } else {
-        // User is signed out
+        // User er signed out
         callback({ loggedIn: false });
       }
     });

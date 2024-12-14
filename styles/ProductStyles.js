@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
-    // Styling til CO2 skalaen
+  // Styling til CO2 skalaen
   scaleContainer: {
     height: 70,
     justifyContent: "center",
@@ -46,23 +46,23 @@ export default StyleSheet.create({
     color: "#AF0404",
   },
 
-// Styling til FoldOutMenuComponent
+  // Styling til FoldOutMenuComponent
   button: {
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: '#6E8840',
+    backgroundColor: "#6E8840",
     padding: 10,
     borderRadius: 10,
     marginVertical: 10,
   },
   buttonText: {
-    color: '#fff',
-    fontWeight: 'bold',
+    color: "#fff",
+    fontWeight: "bold",
     fontFamily: "Anton_400Regular",
   },
   menu: {
     padding: 10,
-    backgroundColor: '#f0f0f0',
+    backgroundColor: "#f0f0f0",
     borderRadius: 5,
   },
 });

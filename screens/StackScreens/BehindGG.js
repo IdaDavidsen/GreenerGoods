@@ -1,4 +1,3 @@
-// ShoppingListScreen.js
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import GGlogoComponent from "../../components/GGlogo";
@@ -6,7 +5,7 @@ import GlobalStyles from "../../styles/GlobalStyles";
 
 export default function BehindGG() {
   return (
-    <View style={GlobalStyles.container}>
+    <View style={GlobalStyles.background}>
       <GGlogoComponent />
       <Text style={GlobalStyles.underTitle}>Bag om GG</Text>
       <Text style={GlobalStyles.mediumText}>
@@ -24,7 +23,8 @@ export default function BehindGG() {
         {"\n"}
         {"\n"}
         {"\n"}
-        Har du ideer, spørgsmål eller andre bemærkninger, så tov ikke med at kontakte os på: hello@greenergoods.com 
+        Har du ideer, spørgsmål eller andre bemærkninger, så tov ikke med at
+        kontakte os på: hello@greenergoods.com
       </Text>
     </View>
   );

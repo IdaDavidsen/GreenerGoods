@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
-searchBar: {
+  searchBar: {
     flexDirection: "row",
     alignItems: "center",
     height: 40,

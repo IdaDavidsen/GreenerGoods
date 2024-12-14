@@ -1,19 +1,11 @@
 import React from "react";
-import {
-  View,
-  Text,
-  SafeAreaView,
-  FlatList,
-  TouchableOpacity,
-  StyleSheet,
-} from "react-native";
+import { View, Text, SafeAreaView, FlatList } from "react-native";
 import GGlogoComponent from "../../components/GGlogo";
 import GlobalStyles from "../../styles/GlobalStyles";
 import ShoppingListStyles from "../../styles/ShoppingListStyles";
 import { useState, useEffect } from "react";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { getAuth } from "firebase/auth";
-import { getDatabase, ref, get, remove } from "firebase/database";
+import { getDatabase, ref, get } from "firebase/database";
 import RemoveButtonComponent from "../../components/RemoveButtonComponent";
 
 export default function ShoppingList({ route }) {
@@ -86,7 +78,7 @@ export default function ShoppingList({ route }) {
   };
 
   return (
-    <SafeAreaView style={GlobalStyles.container}>
+    <SafeAreaView style={GlobalStyles.background}>
       <GGlogoComponent />
       <Text style={GlobalStyles.underTitle}>Din indkøbsliste</Text>
       {loading ? (

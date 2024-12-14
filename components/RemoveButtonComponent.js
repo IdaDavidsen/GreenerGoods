@@ -1,5 +1,4 @@
-import { StatusBar } from "expo-status-bar";
-import { Text, TouchableOpacity } from "react-native";
+import { TouchableOpacity } from "react-native";
 import GlobalStyles from "../styles/GlobalStyles";
 import { getAuth } from "firebase/auth";
 import { getDatabase, ref, remove } from "firebase/database";
@@ -7,7 +6,7 @@ import Icon from "react-native-vector-icons/MaterialIcons";
 
 const RemoveButtonComponent = ({
   productName,
-  setShoppingList, 
+  setShoppingList,
   setSavedProducts,
   onRemove,
   showIcon = true,

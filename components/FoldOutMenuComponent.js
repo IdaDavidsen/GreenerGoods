@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
-import GlobalStyles from '../styles/GlobalStyles';
-import ProductStyles from '../styles/ProductStyles';
+import React, { useState } from "react";
+import { View, Text, TouchableOpacity } from "react-native";
+import GlobalStyles from "../styles/GlobalStyles";
+import ProductStyles from "../styles/ProductStyles";
 
 const FoldOutMenuComponent = ({ product }) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -13,7 +13,9 @@ const FoldOutMenuComponent = ({ product }) => {
   return (
     <View>
       <TouchableOpacity onPress={toggleVisibility} style={ProductStyles.button}>
-        <Text style={ProductStyles.buttonText}>{isVisible ? 'Skjul næringsindholdet' : 'Se næringsindholdet'}</Text>
+        <Text style={ProductStyles.buttonText}>
+          {isVisible ? "Skjul næringsindholdet" : "Se næringsindholdet"}
+        </Text>
       </TouchableOpacity>
       {isVisible && (
         <View style={ProductStyles.menu}>
