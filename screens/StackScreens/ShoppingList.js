@@ -1,16 +1,18 @@
-import React from "react";
-import { View, Text, SafeAreaView, FlatList } from "react-native";
-import GGlogoComponent from "../../components/GGlogo";
-import GlobalStyles from "../../styles/GlobalStyles";
-import ShoppingListStyles from "../../styles/ShoppingListStyles";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import { View, Text, SafeAreaView, FlatList, TouchableOpacity } from "react-native";
 import { getAuth } from "firebase/auth";
 import { getDatabase, ref, get } from "firebase/database";
+
+import GGlogoComponent from "../../components/GGlogo";
 import RemoveButtonComponent from "../../components/RemoveButtonComponent";
 
-export default function ShoppingList({ route }) {
+import GlobalStyles from "../../styles/GlobalStyles";
+import ShoppingListStyles from "../../styles/ShoppingListStyles";
+
+export default function ShoppingList({ item }) {
   const [shoppingList, setShoppingList] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [checkedItems, setCheckedItems] = useState({});
 
   useEffect(() => {
     const fetchShoppingList = async () => {
@@ -37,40 +39,47 @@ export default function ShoppingList({ route }) {
         setLoading(false);
       }
     };
-
     fetchShoppingList();
   }, []);
 
-  const renderProductItem = ({ item }) => {
-    // sikrer kun rendering, når der er produkter
-    if (!item.Produkt || !item.Produkt) return null;
+  const toggleCheckbox = (productName) => {
+    setCheckedItems((prevCheckedItems) => ({
+      ...prevCheckedItems,
+      [productName]: !prevCheckedItems[productName],
+    }));
+  };
 
+  const renderProductItem = ({ item }) => {
     return (
-      <View style={ShoppingListStyles.productCard}>
+      <View style={[GlobalStyles.container, ShoppingListStyles.productCard]}>
         <View
           style={[
             GlobalStyles.productItem,
             ShoppingListStyles.productTextContainer,
           ]}
         >
-          <View style={{ flexDirection: "column" }}>
-            <Text style={[GlobalStyles.text, { right: 90 }]}>
-              {item.Produkt}
-            </Text>
-            <Text style={[GlobalStyles.smallText, { right: 90 }]}>
-              CO2 aftryk:
-            </Text>
+          <View>
+            <Text style={GlobalStyles.text}>{item.Produkt}</Text>
+            <Text style={GlobalStyles.smallText}>
+            CO2 aftryk: {item.Total_kg_CO2e_pr_kg.toFixed(2)} kg CO2e/kg
+              </Text>
           </View>
 
-          <View style={ShoppingListStyles.checkboxStyle}>
-            <View style={ShoppingListStyles.checkbox}>
-              <Text style={ShoppingListStyles.checkboxIcon}>✓</Text>
-            </View>
-            <RemoveButtonComponent
-              productName={item.Produkt}
-              setShoppingList={setShoppingList}
-              referenceType="shoppingLists"
-            />
+          <View style={ShoppingListStyles.checkboxContainer}>
+            <TouchableOpacity
+              style={ShoppingListStyles.checkbox}
+              onPress={() => toggleCheckbox(item.Produkt)}
+            >
+              {checkedItems[item.Produkt] && (
+                <Text style={ShoppingListStyles.checkboxIcon}>✓</Text>
+              )}
+            </TouchableOpacity>
+
+          <RemoveButtonComponent
+            productName={item.Produkt}
+            setShoppingList={setShoppingList}
+            referenceType="shoppingLists"
+          />
           </View>
         </View>
       </View>

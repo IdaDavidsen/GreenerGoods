@@ -2,39 +2,30 @@ import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
   productCard: {
-    backgroundColor: "#fff",
-    borderRadius: 10,
-    padding: 16,
-    marginVertical: 8,
-    alignItems: "center",
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 5,
-    elevation: 2,
-    width: 350,
+    marginHorizontal: 10,
+    marginTop: 20,
   },
   productTextContainer: {
     flexDirection: "row",
-    justifyContent: "center",
+    justifyContent: "space-between",
+  },
+  checkboxContainer: {
+    justifyContent: "flex-end",
+    alignItems: "center",
+    flexDirection: "row",
   },
   checkbox: {
-    width: 40,
-    height: 40,
-    borderWidth: 2,
-    borderColor: "#3c763d",
+    width: 45,
+    height: 45,
+    borderWidth: 1,
+    borderColor: "#6E8840",
     borderRadius: 12,
     alignItems: "center",
     justifyContent: "center",
-  },
-  checkboxStyle: {
-    justifyContent: "center",
-    alignItems: "center",
-    flexDirection: "row",
-    left: 100,
+    marginRight: 10,
   },
   checkboxIcon: {
     fontSize: 16,
-    color: "#3c763d",
+    color: "#6E8840",
   },
 });

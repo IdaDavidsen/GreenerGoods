@@ -73,11 +73,11 @@ export default function ProfileScreen({ navigation }) {
               </View>
             )}
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate("Saved")}>
-            <Text style={ProfileStyles.buttonText}>Gemte</Text>
-          </TouchableOpacity>
           <TouchableOpacity onPress={() => navigation.navigate("ShoppingList")}>
             <Text style={ProfileStyles.buttonText}>Indkøbsliste</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate("Saved")}>
+            <Text style={ProfileStyles.buttonText}>Gemte favoritter</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={() => navigation.navigate("BehindGG")}>
             <Text style={ProfileStyles.buttonText}>Bag om GreenerGoods</Text>

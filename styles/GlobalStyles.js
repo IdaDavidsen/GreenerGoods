@@ -18,6 +18,7 @@ export default StyleSheet.create({
   },
   container: {
     backgroundColor: "#f9f9f9",
+    width: 350,
     borderRadius: 10,
     padding: 16,
     shadowColor: "#000",
@@ -27,7 +28,6 @@ export default StyleSheet.create({
   },
   smallContainer: {
     height: 200,
-    width: 350,
     marginHorizontal: 10,
     marginTop: 20,
   },
