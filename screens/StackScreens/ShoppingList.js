@@ -9,7 +9,7 @@ import RemoveButtonComponent from "../../components/RemoveButtonComponent";
 import GlobalStyles from "../../styles/GlobalStyles";
 import ShoppingListStyles from "../../styles/ShoppingListStyles";
 
-export default function ShoppingList({ item }) {
+export default function ShoppingList({}) {
   const [shoppingList, setShoppingList] = useState([]);
   const [loading, setLoading] = useState(true);
   const [checkedItems, setCheckedItems] = useState({});

@@ -1,14 +1,16 @@
-import React from "react";
-import { View, Text, SafeAreaView, FlatList } from "react-native";
-import GGlogoComponent from "../../components/GGlogo";
-import GlobalStyles from "../../styles/GlobalStyles";
-import ShoppingListStyles from "../../styles/ShoppingListStyles";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import { View, Text, SafeAreaView, FlatList, TouchableOpacity } from "react-native";
 import { getAuth } from "firebase/auth";
-import { getDatabase, ref, get, remove } from "firebase/database";
+import { getDatabase, ref, get } from "firebase/database";
+
+import GGlogoComponent from "../../components/GGlogo";
 import RemoveButtonComponent from "../../components/RemoveButtonComponent";
 
-export default function SavedProducts({ route }) {
+import GlobalStyles from "../../styles/GlobalStyles";
+import ShoppingListStyles from "../../styles/ShoppingListStyles";
+
+
+export default function SavedProducts({ }) {
   const [savedProducts, setSavedProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -37,29 +39,23 @@ export default function SavedProducts({ route }) {
         setLoading(false);
       }
     };
-
     fetchSavedProducts();
   }, []);
 
   const renderProductItem = ({ item }) => {
-    // sikrer kun rendering, når der er produkter
-    if (!item.Produkt) return null;
-
     return (
-      <View style={ShoppingListStyles.productCard}>
-        <View
-          style={[
-            GlobalStyles.productItem,
-            ShoppingListStyles.productTextContainer,
-          ]}
-        >
-          <View style={{ flexDirection: "column" }}>
-            <Text style={[GlobalStyles.text, { right: 90 }]}>
-              {item.Produkt}
-            </Text>
-            <Text style={[GlobalStyles.smallText, { right: 90 }]}>
-              CO2 aftryk:
-            </Text>
+      <View style={[GlobalStyles.container, ShoppingListStyles.productCard]}>
+      <View
+        style={[
+          GlobalStyles.productItem,
+          ShoppingListStyles.productTextContainer,
+        ]}
+      >
+         <View>
+            <Text style={GlobalStyles.text}>{item.Produkt}</Text>
+            <Text style={GlobalStyles.smallText}>
+            CO2 aftryk: {item.Total_kg_CO2e_pr_kg.toFixed(2)} kg CO2e/kg
+              </Text>
           </View>
 
           <RemoveButtonComponent
@@ -75,7 +71,7 @@ export default function SavedProducts({ route }) {
   return (
     <SafeAreaView style={GlobalStyles.background}>
       <GGlogoComponent />
-      <Text style={GlobalStyles.underTitle}>Dine favorit varer</Text>
+      <Text style={GlobalStyles.underTitle}>Dine gemte favoritter</Text>
       {loading ? (
         <Text style={GlobalStyles.text}>Henter varer...</Text>
       ) : savedProducts.length === 0 ? (
