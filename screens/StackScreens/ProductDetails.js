@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { Text, View, TouchableOpacity, SafeAreaView } from "react-native";
+import { Text, View, TouchableOpacity, SafeAreaView, Alert } from "react-native";
 import GlobalStyles from "../../styles/GlobalStyles";
 import ProductStyles from "../../styles/ProductStyles";
 
@@ -67,6 +67,7 @@ export default function ProductDetails({ route, navigation }) {
         setIsAdded(true);
         console.log("Product added to shopping list");
       } else {
+        Alert.alert("Login Required", "Please log in to add products to your shopping list. Go to profile to log in.");
         console.log("User is not logged in");
       }
     } catch (error) {
@@ -91,6 +92,7 @@ export default function ProductDetails({ route, navigation }) {
         setIsSaved(true);
         console.log("Product saved!");
       } else {
+        Alert.alert("Login Required", "Please log in to save products. Go to profile to log in.");
         console.log("User is not logged in");
       }
     } catch (error) {
