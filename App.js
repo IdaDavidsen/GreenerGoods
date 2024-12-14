@@ -1,6 +1,4 @@
 import React from "react";
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, Image } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { getApps, initializeApp } from "firebase/app";
@@ -16,7 +14,6 @@ import { getApp } from "firebase/app";
 import HomeStackComponent from "./components/StackComponents/HomeStackComponent";
 import SearchStackComponent from "./components/StackComponents/SearchStackComponent";
 import ProfileStackComponent from "./components/StackComponents/ProfileStackComponent";
-import ScanStackComponent from "./components/StackComponents/ScanStackComponent";
 import GreenFeedScreen from "./screens/GreenFeedScreen";
 
 // Your web app's Firebase configuration
@@ -114,15 +111,6 @@ export default function App() {
             headerShown: false,
           }}
         />
-       {/*<Tab.Screen
-          name="Scan"
-          component={ScanStackComponent}
-          options={{
-            tabBarIcon: () => <Ionicons name="camera" size={20} />,
-            headerShown: false,
-          }}
-        />
-        */}
         <Tab.Screen
           name="Profil"
           component={ProfileStackComponent}
