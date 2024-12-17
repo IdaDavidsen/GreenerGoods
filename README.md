@@ -1,7 +1,8 @@
 Velkommen til Greener Goods! App'en der gør dine indkøb grønnere.
 Husk at køre `npm install` for at installere alle nødvendige pakker.
 
-Hvis der er problemer skriv "npm audit fix".
+Hvis der er problemer skriv `npm audit fix`.
+Skriv "npm start" for at kører appen. 
 
 
 Features som app'en kan:
