@@ -1,9 +1,7 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { getApps, initializeApp } from "firebase/app";
 import { useState, useEffect } from "react";
-import Ionicons from "react-native-vector-icons/Ionicons";
 
 import {
   getAuth,
@@ -14,23 +12,14 @@ import {
 import ReactNativeAsyncStorage from "@react-native-async-storage/async-storage";
 import { getApp } from "firebase/app";
 
-// screens
-import HomeStackComponent from "./components/StackComponents/HomeStackComponent";
-import SearchStackComponent from "./components/StackComponents/SearchStackComponent";
-import ProfileStackComponent from "./components/StackComponents/ProfileStackComponent";
-import GreenFeedScreen from "./screens/GreenFeedScreen";
+// Navigation
+import TabNavigator from "./navigation/tabNavigator";
 
 // Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyBrTaP41sy8mc5Tusm1--bJLu0vwz9ih3s",
-  authDomain: "greenergoods.firebaseapp.com",
-  databaseURL:
-    "https://greenergoods-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "greenergoods",
-  storageBucket: "greenergoods.appspot.com",
-  messagingSenderId: "220300318592",
-  appId: "1:220300318592:web:f173601bc2eaebe95e5365",
-};
+import { firebaseConfig } from "./config/firebaseConfig";
+
+// Theme
+import { ThemeProvider } from "./context/ThemeContext";
 
 // Initialize Firebase
 export default function App() {
@@ -81,48 +70,11 @@ export default function App() {
     initializeApp(firebaseConfig);
   }
 
-  const Tab = createBottomTabNavigator();
   return (
-    <NavigationContainer>
-      <Tab.Navigator
-        screenOptions={{
-          tabBarActiveTintColor: "#6e8840",
-          tabBarInactiveTintColor: "#967859",
-        }}
-      >
-        <Tab.Screen
-          name="Hjem"
-          component={HomeStackComponent}
-          options={{
-            tabBarIcon: () => <Ionicons name="home" size={20} />,
-            headerShown: false,
-          }}
-        />
-        <Tab.Screen
-          name="GreenFeed"
-          component={GreenFeedScreen}
-          options={{
-            tabBarIcon: () => <Ionicons name="leaf" size={20} />,
-            headerShown: false,
-          }}
-        />
-        <Tab.Screen
-          name="Søg"
-          component={SearchStackComponent}
-          options={{
-            tabBarIcon: () => <Ionicons name="search" size={20} />,
-            headerShown: false,
-          }}
-        />
-        <Tab.Screen
-          name="Profil"
-          component={ProfileStackComponent}
-          options={{
-            tabBarIcon: () => <Ionicons name="person" size={20} />,
-            headerShown: false,
-          }}
-        />
-      </Tab.Navigator>
-    </NavigationContainer>
+    <ThemeProvider>
+      <NavigationContainer>
+        <TabNavigator />
+      </NavigationContainer>
+    </ThemeProvider>
   );
 }
